@@ -36,17 +36,20 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(238, 22);
+            label1.Location = new Point(244, 31);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(296, 48);
+            label1.Size = new Size(488, 41);
             label1.TabIndex = 0;
-            label1.Text = "Quan Ly Thu Vien";
+            label1.Text = "Chào Mừng Bạn Đến Với Thư Viện  ";
+            label1.Click += label1_Click;
             // 
             // button1
             // 
-            button1.Location = new Point(341, 244);
+            button1.Location = new Point(418, 475);
+            button1.Margin = new Padding(2, 2, 2, 2);
             button1.Name = "button1";
-            button1.Size = new Size(112, 34);
+            button1.Size = new Size(90, 27);
             button1.TabIndex = 1;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
@@ -54,13 +57,15 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(985, 574);
             Controls.Add(button1);
             Controls.Add(label1);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
