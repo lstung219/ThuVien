@@ -31,23 +31,37 @@ namespace GUI
             user.USERNAME = txbtk.Text;
             user.PASSWORD = txbmk.Text;
             string getuser = userBLL.Checklogin(user);
-            switch (getuser)
-            {
-                case "tk_trong":
-                    MessageBox.Show("Tài khoản không được để trống!");
-                    break;
-                case "mk_trong":
-                    MessageBox.Show("Mật khẩu không được để trống!");
-                    break;
-                case "khong_dung":
-                    MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!");
-                    break;
-            }
-            MessageBox.Show("Đăng nhập thành công vào hệ thống.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            FormChuongTrinh f = new FormChuongTrinh();
-            f.Show();
-            this.Hide();
 
+            if (getuser == "tk_trong")
+            {
+                MessageBox.Show("Tài khoản không được để trống!");
+                return;
+            }
+            else if (getuser == "mk_trong")
+            {
+                MessageBox.Show("Mật khẩu không được để trống!");
+                return;
+            }
+            else if (getuser == "Khong_dung")
+            {
+                MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!");
+                return;
+            }
+            else // Đăng nhập thành công
+            {
+                MessageBox.Show("Đăng nhập thành công vào hệ thống.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Kiểm tra nếu form đã tồn tại, không mở form mới
+                FormChuongTrinh f = Application.OpenForms["FormChuongTrinh"] as FormChuongTrinh;
+                if (f == null)
+                {
+                    f = new FormChuongTrinh();
+                    f.Show();
+                }
+
+                this.Hide(); // Ẩn form hiện tại
+            }
         }
+
     }
 }

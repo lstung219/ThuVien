@@ -16,5 +16,70 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void FormChuongTrinh_Load(object sender, EventArgs e)
+        {
+
+        }
+        private Form currentFormChild;
+        private void OpenChildForm(Form ChildForm)
+        {
+            if (currentFormChild != null)
+            {
+                currentFormChild.Close();
+            }
+            currentFormChild = ChildForm;
+            ChildForm.TopLevel = false;
+            ChildForm.FormBorderStyle = FormBorderStyle.None;
+            ChildForm.Dock = DockStyle.Fill;
+            panel3.Controls.Add(ChildForm);
+            panel3.Tag = ChildForm;
+            ChildForm.BringToFront();
+            ChildForm.Show();
+        }
+
+
+        private void btn_thongke_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm(new Thongke());
+            label1.Text=btn_thongke.Text;
+            pictureBox2.Image = btn_thongke.Image;
+            menuTransition.Start();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        bool menuExpand = false;
+        private void menuTransition_Tick(object sender, EventArgs e)
+        {
+            if(menuExpand== false)
+            {
+                flowLayoutPanel1.Height += 10;
+                if(flowLayoutPanel1.Height >=333)
+                {
+                    menuTransition.Stop();
+                    menuExpand= true;
+                }
+            }
+            else
+            {
+                flowLayoutPanel1.Height -= 10;
+                if(flowLayoutPanel1.Height <= 124)
+                {
+                    menuTransition.Stop();
+                    menuExpand= false;
+                }
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (currentFormChild != null)
+            {
+                currentFormChild.Close();
+            }
+        }
     }
 }
