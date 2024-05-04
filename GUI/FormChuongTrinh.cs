@@ -41,12 +41,12 @@ namespace GUI
 
         private void btn_thongke_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new Thongke());
+            OpenChildForm(new Thongke());
             label1.Text=btn_thongke.Text;
             pictureBox2.Image = btn_thongke.Image;
             menuTransition.Start();
         }
-
+        
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
@@ -80,6 +80,11 @@ namespace GUI
             {
                 currentFormChild.Close();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Thongke());
         }
     }
 }
