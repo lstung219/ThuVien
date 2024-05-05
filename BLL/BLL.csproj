@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL_Phieu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sachBLL.cs" />
     <Compile Include="UserBLL.cs" />
