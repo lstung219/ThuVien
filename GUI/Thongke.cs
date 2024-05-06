@@ -14,6 +14,7 @@ namespace GUI
 {
     public partial class Thongke : Form
     {
+
         private SachBLL sachBLL;
         public Thongke()
         {
@@ -23,17 +24,32 @@ namespace GUI
 
         private void Thongke_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        private void reportViewer1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<SachMuonNhieuNhat> sachList = sachBLL.GetBooksMostBorrowed();
+
+            reportViewer1.LocalReport.ReportPath = "Report2.rdlc"; // Đường dẫn đến file report
+            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet2", sachList));
+            reportViewer1.RefreshReport();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
             List<Sach> sachList = sachBLL.GetAllBooks();
 
             reportViewer1.LocalReport.ReportPath = "Report1.rdlc"; // Đường dẫn đến file report
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", sachList));
             reportViewer1.RefreshReport();
-        }
-
-        private void reportViewer1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

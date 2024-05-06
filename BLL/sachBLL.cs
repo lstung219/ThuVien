@@ -17,5 +17,9 @@ namespace BLL
         {
             return sachDAL.GetAllBooks();
         }
+        public List<SachMuonNhieuNhat> GetBooksMostBorrowed()
+        {
+            return sachDAL.GetBooksMostBorrowed();
+        }
     }
 }

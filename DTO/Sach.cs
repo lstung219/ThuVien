@@ -16,6 +16,11 @@ namespace DTO
         public string THELOAI { get; set; }
         public string NGONNGU { get; set; }
         public string SLTON { get; set; }
-
+    }
+    public class SachMuonNhieuNhat
+    {
+        public string MASACH { get; set; }
+        public string TENSACH { get; set; }
+        public int SoLuotMuon { get; set; }
     }
 }

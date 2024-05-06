@@ -28,16 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChuongTrinh));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_thongke = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.pannel_body = new System.Windows.Forms.Panel();
             this.btn_phieu = new System.Windows.Forms.Button();
+            this.pannel_body = new System.Windows.Forms.Panel();
             this.btn_docgia = new System.Windows.Forms.Button();
             this.btn_sach = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -45,9 +40,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.menuTransition = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -56,9 +49,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.panel1.Controls.Add(this.flowLayoutPanel1);
-            this.panel1.Controls.Add(this.pannel_body);
+            this.panel1.Controls.Add(this.btn_thongke);
             this.panel1.Controls.Add(this.btn_phieu);
+            this.panel1.Controls.Add(this.pannel_body);
             this.panel1.Controls.Add(this.btn_docgia);
             this.panel1.Controls.Add(this.btn_sach);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -67,18 +60,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 953);
             this.panel1.TabIndex = 0;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.btn_thongke);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.Controls.Add(this.button3);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 525);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 124);
-            this.flowLayoutPanel1.TabIndex = 5;
             // 
             // btn_thongke
             // 
@@ -89,66 +70,14 @@
             this.btn_thongke.ForeColor = System.Drawing.Color.Gainsboro;
             this.btn_thongke.Image = ((System.Drawing.Image)(resources.GetObject("btn_thongke.Image")));
             this.btn_thongke.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_thongke.Location = new System.Drawing.Point(3, 3);
+            this.btn_thongke.Location = new System.Drawing.Point(0, 525);
             this.btn_thongke.Name = "btn_thongke";
-            this.btn_thongke.Size = new System.Drawing.Size(197, 124);
+            this.btn_thongke.Size = new System.Drawing.Size(200, 124);
             this.btn_thongke.TabIndex = 4;
             this.btn_thongke.Text = "Thống kê";
             this.btn_thongke.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_thongke.UseVisualStyleBackColor = true;
             this.btn_thongke.Click += new System.EventHandler(this.btn_thongke_Click);
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(3, 133);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 61);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Sách được mượn";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(3, 200);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(197, 61);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Số lượng sách";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(3, 267);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(197, 61);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Độc giả";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // pannel_body
-            // 
-            this.pannel_body.Location = new System.Drawing.Point(200, 106);
-            this.pannel_body.Name = "pannel_body";
-            this.pannel_body.Size = new System.Drawing.Size(1282, 847);
-            this.pannel_body.TabIndex = 2;
             // 
             // btn_phieu
             // 
@@ -166,6 +95,13 @@
             this.btn_phieu.Text = "Phiếu mượn/trả";
             this.btn_phieu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_phieu.UseVisualStyleBackColor = true;
+            // 
+            // pannel_body
+            // 
+            this.pannel_body.Location = new System.Drawing.Point(200, 106);
+            this.pannel_body.Name = "pannel_body";
+            this.pannel_body.Size = new System.Drawing.Size(1282, 847);
+            this.pannel_body.TabIndex = 2;
             // 
             // btn_docgia
             // 
@@ -255,11 +191,6 @@
             this.panel3.TabIndex = 2;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
-            // menuTransition
-            // 
-            this.menuTransition.Interval = 10;
-            this.menuTransition.Tick += new System.EventHandler(this.menuTransition_Tick);
-            // 
             // FormChuongTrinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -274,7 +205,6 @@
             this.Text = "Thư viện";
             this.Load += new System.EventHandler(this.FormChuongTrinh_Load);
             this.panel1.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -296,10 +226,5 @@
         private System.Windows.Forms.Button btn_thongke;
         private System.Windows.Forms.Panel pannel_body;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Timer menuTransition;
     }
 }
