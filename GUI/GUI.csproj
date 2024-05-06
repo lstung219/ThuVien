@@ -64,6 +64,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormSuaThongTin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSuaThongTin.Designer.cs">
+      <DependentUpon>FormSuaThongTin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDanhSachDocGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDanhSachDocGia.Designer.cs">
+      <DependentUpon>FormDanhSachDocGia.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormChuongTrinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +87,12 @@
     </Compile>
     <Compile Include="FormDangNhap.Designer.cs">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormThemDocGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormThemDocGia.Designer.cs">
+      <DependentUpon>FormThemDocGia.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPhieu.cs">
       <SubType>Form</SubType>
@@ -95,6 +113,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDanhSachDocGia.resx">
+      <DependentUpon>FormDanhSachDocGia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSuaThongTin.resx">
+      <DependentUpon>FormSuaThongTin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormThemDocGia.resx">
+      <DependentUpon>FormThemDocGia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPhieu.resx">
       <DependentUpon>frmPhieu.cs</DependentUpon>

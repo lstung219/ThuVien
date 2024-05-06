@@ -45,6 +45,7 @@
     <Compile Include="DAL_PhieuTra.cs" />
     <Compile Include="DatabaseAccess.cs" />
     <Compile Include="DataProvider.cs" />
+    <Compile Include="DocGiaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SachDAL.cs" />
     <Compile Include="TaikhoanAccess.cs" />
