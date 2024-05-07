@@ -34,21 +34,35 @@ namespace GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<SachMuonNhieuNhat> sachList = sachBLL.GetBooksMostBorrowed();
+            List<SachMuonNhieuNhat> sachListt = sachBLL.GetBooksMostBorrowedFromDAL();
 
             reportViewer1.LocalReport.ReportPath = "Report2.rdlc"; // Đường dẫn đến file report
-            reportViewer1.LocalReport.DataSources.Clear();
-            reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet2", sachList));
+            reportViewer1.LocalReport.DataSources.Clear(); // Xóa dữ liệu nguồn cũ
+            reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", sachListt));
             reportViewer1.RefreshReport();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            List<Sach> sachList = sachBLL.GetAllBooks();
+            List<Sach> sachList = sachBLL.GetAllBooksFromDAL();
 
             reportViewer1.LocalReport.ReportPath = "Report1.rdlc"; // Đường dẫn đến file report
-            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.DataSources.Clear(); // Xóa dữ liệu nguồn cũ
             reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", sachList));
+            reportViewer1.RefreshReport();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            List<Docgiamuonsach> docGiaMuonSachList = sachBLL.GetAllDocgiamuonsach();
+            reportViewer1.LocalReport.ReportPath = "Report3.rdlc";
+            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", docGiaMuonSachList));
             reportViewer1.RefreshReport();
         }
     }

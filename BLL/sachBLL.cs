@@ -14,10 +14,19 @@ namespace BLL
             sachDAL = new SachDAL();
         }
 
-        public List<Sach> GetAllBooks()
+        public List<SachMuonNhieuNhat> GetBooksMostBorrowedFromDAL()
+        {
+            return sachDAL.GetBooksMostBorrowed();
+        }
+        public List<Docgiamuonsach> GetAllDocgiamuonsach()
+        {
+            return sachDAL.GetAllDocgiamuonsach();
+        }
+        public List<Sach> GetAllBooksFromDAL()
         {
             return sachDAL.GetAllBooks();
         }
+
         public DataTable timsach(string tensach)
         {
             return sachDAL.timsach(tensach);
@@ -33,9 +42,7 @@ namespace BLL
         public bool xoa(string masach)
         {
             return sachDAL.xoa(masach);
-        public List<SachMuonNhieuNhat> GetBooksMostBorrowed()
-        {
-            return sachDAL.GetBooksMostBorrowed();
         }
+        
     }
 }

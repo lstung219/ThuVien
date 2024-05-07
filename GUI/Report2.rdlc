@@ -12,7 +12,8 @@
                 <Value>Thư viện Đại học Thủ Dầu Một</Value>
                 <Style>
                   <FontFamily>Times New Roman</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>26pt</FontSize>
+                  <Color>Blue</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -24,6 +25,8 @@
                 <Value>Số 6, Trần Văn Ơn, Phú Hòa, Thủ Dầu Một, Bình Dương</Value>
                 <Style>
                   <FontFamily>Times New Roman</FontFamily>
+                  <FontSize>14pt</FontSize>
+                  <Color>Blue</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -31,8 +34,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Height>0.5in</Height>
-        <Width>3.21667in</Width>
+        <Height>0.69167in</Height>
+        <Width>4.83834in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -50,10 +53,12 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Thống kê sách</Value>
+                <Value>Số sách được mượn nhiều nhất</Value>
                 <Style>
                   <FontFamily>Times New Roman</FontFamily>
                   <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>Red</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -63,10 +68,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
-        <Top>0.56944in</Top>
-        <Left>3.16333in</Left>
+        <Top>0.76112in</Top>
+        <Left>0.17167in</Left>
         <Height>0.34167in</Height>
-        <Width>1.61667in</Width>
+        <Width>7.54167in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -82,13 +87,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>2.51389in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>2.51389in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>2.51389in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -97,21 +102,26 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox13">
+                    <Textbox Name="Textbox3">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>MASACH</Value>
-                              <Style />
+                              <Value>Mã Sách</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Red</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox13</rd:DefaultName>
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -127,21 +137,26 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox9">
+                    <Textbox Name="Textbox5">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>TENSACH</Value>
-                              <Style />
+                              <Value>Tên Sách</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Red</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <rd:DefaultName>Textbox5</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -157,21 +172,26 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox11">
+                    <Textbox Name="Textbox7">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>So Luot Muon</Value>
-                              <Style />
+                              <Value>Số Lượt Mượn</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Red</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -301,11 +321,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DataSet2</DataSetName>
-        <Top>1.06112in</Top>
-        <Left>0.16333in</Left>
+        <DataSetName>DataSet1</DataSetName>
+        <Top>1.17223in</Top>
+        <Left>0.17167in</Left>
         <Height>0.5in</Height>
-        <Width>3in</Width>
+        <Width>7.54167in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -314,7 +334,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>2.07167in</Height>
     <Style />
   </Body>
   <Width>9.16333in</Width>
@@ -337,55 +357,6 @@
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
-      <Query>
-        <DataSourceName>DTO</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="MASACH">
-          <DataField>MASACH</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="NGONNGU">
-          <DataField>NGONNGU</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="NHAXB">
-          <DataField>NHAXB</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="NXB">
-          <DataField>NXB</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="SLTON">
-          <DataField>SLTON</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Soluotmuon">
-          <DataField>Soluotmuon</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="TACGIA">
-          <DataField>TACGIA</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TENSACH">
-          <DataField>TENSACH</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="THELOAI">
-          <DataField>THELOAI</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>DTO</rd:DataSetName>
-        <rd:TableName>Sach</rd:TableName>
-        <rd:ObjectDataSourceType>DTO.Sach, DTO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
-      </rd:DataSetInfo>
-    </DataSet>
-    <DataSet Name="DataSet2">
       <Query>
         <DataSourceName>DTO</DataSourceName>
         <CommandText>/* Local Query */</CommandText>

@@ -64,6 +64,7 @@ namespace DAL
             string query = string.Format("DELETE FROM SACH WHERE MASACH='{0}'", masach);
             int relsult = DataProvider.Instance.ExecuteNonQuery(query);
             return relsult > 0;
+        }
         public List<SachMuonNhieuNhat> GetBooksMostBorrowed()
         {
             List<SachMuonNhieuNhat> sachList = new List<SachMuonNhieuNhat>();
@@ -95,5 +96,38 @@ namespace DAL
 
             return sachList;
         }
+        public List<Docgiamuonsach> GetAllDocgiamuonsach()
+        {
+            List<Docgiamuonsach> docGiaMuonSachList = new List<Docgiamuonsach>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"
+                    SELECT c.MASACH, d.HOTEN, d.SDT, d.DIACHI, S.TENSACH
+                    FROM CHITIETPHIEUMUON c
+                    JOIN PHIEUMUON pm ON c.MAPHIEUMUON = pm.MAPHIEUMUON
+                    JOIN SACH S ON S.MASACH = c.MASACH
+                    JOIN DOCGIA d ON pm.MADG = d.MADG";
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Docgiamuonsach docGiaMuonSach = new Docgiamuonsach
+                    {
+                        MASACH = reader["MASACH"].ToString(),
+                        Hoten = reader["HOTEN"].ToString(),
+                        Sdt = reader["SDT"].ToString(),
+                        DiaChi = reader["DIACHI"].ToString(),
+                        TenSach = reader["TENSACH"].ToString()
+                    };
+                    docGiaMuonSachList.Add(docGiaMuonSach);
+                }
+                connection.Close();
+            }
+
+            return docGiaMuonSachList;
+        }
+
     }
 }

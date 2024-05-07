@@ -10,6 +10,8 @@ namespace DTO
     {
         public string MaDG {  get; set; }
         public string HoTen {  get; set; }
+        public string NgaySinh {  get; set; }
+        public string GioiTinh {  get; set; }
         public string Sdt {  get; set; }
         public string Diachi {  get; set; }
     }
