@@ -27,7 +27,7 @@ namespace GUI
             //string query = "SELECT MASP AS [Mã sản phẩm], TENSP AS [Tên sản phẩm], KIEU AS [Loại sản phẩm], GIA AS [Giá cả] FROM SANPHAM";
             SachBLL sachBLL = new SachBLL();
 
-            sach.DataSource = sachBLL.GetAllBooks();
+            sach.DataSource = sachBLL.GetAllBooksFromDAL();
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             DinhDangLuoi();
         }
