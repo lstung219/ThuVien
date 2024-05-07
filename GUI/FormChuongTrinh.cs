@@ -62,6 +62,18 @@ namespace GUI
             }
         }
 
-        
+        private void btn_sach_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new fSach());
+            label1.Text = btn_sach.Text;
+            pictureBox2.Image = btn_sach.Image;
+        }
+
+        private void btn_phieu_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmPhieu());
+            label1.Text = btn_phieu.Text;
+            pictureBox2.Image = btn_phieu.Image;
+        }
     }
 }

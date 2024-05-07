@@ -95,6 +95,7 @@
             this.btn_phieu.Text = "Phiếu mượn/trả";
             this.btn_phieu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_phieu.UseVisualStyleBackColor = true;
+            this.btn_phieu.Click += new System.EventHandler(this.btn_phieu_Click);
             // 
             // pannel_body
             // 
@@ -136,6 +137,7 @@
             this.btn_sach.Text = "Quản Lý Sách";
             this.btn_sach.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_sach.UseVisualStyleBackColor = true;
+            this.btn_sach.Click += new System.EventHandler(this.btn_sach_Click);
             // 
             // pictureBox1
             // 
