@@ -8,11 +8,11 @@ namespace DTO
 {
     public class DTO_PhieuMuon
     {
-        public DTO_PhieuMuon(string maCTPM, string maTaiLieu, string maTaiLieuCu, string maPhieuMuon)
+        public DTO_PhieuMuon(string maCTPM, string maSach, string maSachCu, string maPhieuMuon)
         {
             MaCTPM = maCTPM;
-            MaTaiLieu = maTaiLieu;
-            MaTaiLieuCu = maTaiLieuCu;
+            MaSach = maSach;
+            MaSachCu = maSachCu;
             MAPHIEUMUON = maPhieuMuon;
         }
 
@@ -21,7 +21,7 @@ namespace DTO
         public string MADG { get; set; }
         public string MAQT { get; set; }
         public string MaCTPM { get; }
-        public string MaTaiLieu { get; }
-        public string MaTaiLieuCu { get; }
+        public string MaSach { get; }
+        public string MaSachCu { get; }
     }
 }

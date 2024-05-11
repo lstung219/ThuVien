@@ -22,7 +22,7 @@ namespace GUI
 
         }
         private Form currentFormChild;
-        private void OpenChildForm(Form ChildForm)
+        public void OpenChildForm(Form ChildForm)
         {
             if (currentFormChild != null)
             {
@@ -62,6 +62,18 @@ namespace GUI
             }
         }
 
-        
+        private void btn_docgia_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormDanhSachDocGia());
+            label1.Text = btn_docgia.Text;
+            pictureBox2.Image = btn_docgia.Image;
+        }
+
+        private void btn_phieu_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmPhieu());
+            label1.Text = btn_phieu.Text;
+            pictureBox2.Image = btn_phieu.Image;
+        }
     }
 }

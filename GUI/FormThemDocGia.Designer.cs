@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System;
+
+namespace GUI
 {
     partial class FormThemDocGia
     {
@@ -81,6 +83,7 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin độc giả";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // textBox4
             // 
@@ -163,6 +166,7 @@
             this.label1.Size = new System.Drawing.Size(346, 38);
             this.label1.TabIndex = 4;
             this.label1.Text = "THÔNG TIN ĐỘC GIẢ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // FormThemDocGia
             // 
@@ -181,6 +185,11 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

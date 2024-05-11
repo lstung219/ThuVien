@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data;
 
-public class BusinessLogic
+public class DocGiaBLL
 {
     private DataAccess dataAccess;
 
-    public BusinessLogic()  
+    public DocGiaBLL()  
     {
         dataAccess = new DataAccess();
     }
@@ -20,18 +20,26 @@ public class BusinessLogic
         return dataAccess.CheckMaDG(maDG);
     }
 
-    public void UpdateDGInfo(string maDG, string hoTen, string sdt, string diaChi)
+    public void UpdateDGInfo(string maDG, string hoTen, string sdt, string diaChi, DateTime ngaySinh, string gioiTinh, string email)
     {
-        dataAccess.UpdateDGInfo(maDG, hoTen, sdt, diaChi);
+        dataAccess.UpdateDGInfo(maDG, hoTen, sdt, diaChi, ngaySinh, gioiTinh, email);
     }
 
-    public void InsertDG(string maDG, string hoTen, string sdt, string diaChi)
+    public void InsertDG(string maDG, string hoTen, string sdt, string diaChi, DateTime ngaySinh, string gioiTinh, string email)
     {
-        dataAccess.InsertDG(maDG, hoTen, sdt, diaChi);
+        dataAccess.InsertDG(maDG, hoTen, sdt, diaChi, ngaySinh, gioiTinh, email);
     }
 
     public void DeleteDG(string maDG)
     {
         dataAccess.DeleteDG(maDG);
+    }
+    public string TimMaDocGiaTiepTheo()
+    {
+        return dataAccess.TimMaDocGiaTiepTheo();
+    }
+    public DataTable XemChiTietDocGia(string maDG)
+    {
+         return dataAccess.XemChiTietDocGia(maDG);
     }
 }

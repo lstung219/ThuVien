@@ -14,11 +14,43 @@ namespace GUI
 {
     public partial class frmPhieu : Form
     {
+        private BLL_Phieu p;
         public frmPhieu()
         {
             InitializeComponent();
+            LoadDataFromFormDanhSachDocGia();
+            BLL_Phieu p = new BLL_Phieu();
+            cbxMaTLPM.DataSource = p.LayDanhSachSach();
+            cbxMaTLPM.DisplayMember = "TenSach";
+            cbxMaTLPM.ValueMember = "MaSach";
         }
+        public string maDG;
+        private void LoadDataFromFormDanhSachDocGia()
+        {
+            FormDanhSachDocGia formDanhSachDocGia = (FormDanhSachDocGia)Application.OpenForms["FormDanhSachDocGia"];
+            if (formDanhSachDocGia != null)
+            {
+                string loaiPhieu = formDanhSachDocGia.LoaiPhieu;
+                if (loaiPhieu == "PhieuMuon")
+                {
+                    maDG = formDanhSachDocGia.MaDG;
+                    string tenDG = formDanhSachDocGia.TenDG;
+                    cbxMaDGPM.Text = tenDG;
+                    cbxMaDGPM.SelectedValue = maDG;
+                    lbMaDocGia.Text = maDG;
+                    tbcQuanLiPhieu.SelectedTab = tbcQuanLiPhieu.TabPages[0];
+                    tbcPhieuMuon.SelectedTab = tbcPhieuMuon.TabPages[1];
+                }
+                if (loaiPhieu == "PhieuTra")
+                {
+                    string maDG = formDanhSachDocGia.MaDG;
+                    txtSearchPT.Text = maDG;
+                    tbcQuanLiPhieu.SelectedTab = tbcQuanLiPhieu.TabPages[1];
+                    tbcPhieuTra.SelectedTab = tbcPhieuTra.TabPages[1];
+                }
 
+            }
+        }
         private void lbListSachMuon_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -26,6 +58,40 @@ namespace GUI
 
         private void btnThem_PhieuMuon_Click(object sender, EventArgs e)
         {
+            if (lbListSachMuon.Items.Count > 0)
+            {
+                string madocgia = /*cbxMaDGPM.SelectedValue.ToString().Trim();*/ maDG;
+                string masach = lbListSachMuonHide.Items[0].ToString().Trim();
+                string maQTHienTai = "QT001";
+                BLL_Phieu mpm = new BLL_Phieu();
+                string maphieumuon = mpm.LayMaPhieuMuonTiepTheo().Trim();
+                string mactpm = mpm.LayMaChiTietPhieuMuonTiepTheo().Trim();
+
+                BLL_Phieu bllPhieu = new BLL_Phieu();
+                //DTO_PhieuMuon DTO = new DTO_PhieuMuon(maQTHienTai.Trim(),madocgia, masach, maphieumuon, mactpm);
+
+                if (bllPhieu.ThemPhieuMuon(maQTHienTai, madocgia, masach, maphieumuon, mactpm) == 1)
+                {
+                    for (int i = 0; i < Int32.Parse(lbListSachMuonHide.Items.Count.ToString()); i++)
+                    {
+                        string maSach = lbListSachMuonHide.Items[i].ToString().Trim();
+                        BLL_Phieu bllPhieuCT = new BLL_Phieu();
+                        //DTO_PhieuMuon DTOCT = new DTO_PhieuMuon(maQTHienTai, madocgia, masach, maphieumuon, mactpm);
+                        bllPhieu.ThemChiTietPhieuMuon(mactpm, maSach, maphieumuon);
+                    }
+                    MessageBox.Show("Lập Phiếu Mượn Thành Công !!!");
+
+                    lbListSachMuon.Items.Clear();
+                    lbListSachMuonHide.Items.Clear();
+                }
+                else
+                {
+                    lbListSachMuon.Items.Clear();
+                    lbListSachMuonHide.Items.Clear();
+                    MessageBox.Show("Độc giả không được sử dụng dịch vụ nữa :(");
+                }
+            }
+            else MessageBox.Show("Vui lòng chọn tài liệu mượn");
 
         }
 
@@ -162,12 +228,11 @@ namespace GUI
 
         private void cbxMaTLPM_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            lbMaTaiLieuPhieuMuon.Text = cbxMaTLPM.SelectedValue.ToString();
         }
 
         private void btnAddMTLVaoList_Click(object sender, EventArgs e)
         {
-            string maDocGia = cbxMaDGPM.SelectedValue.ToString();
             BLL_Phieu p = new BLL_Phieu();
             for (int i = 0; i < Int32.Parse(lbListSachMuon.Items.Count.ToString()); i++)
             {
@@ -178,7 +243,7 @@ namespace GUI
                     return;
                 }
             }
-            if ((p.SoSachDangMuon(maDocGia) + lbListSachMuon.Items.Count) < 5)
+            if ((/*p.SoSachDangMuon(maDG) +*/ lbListSachMuon.Items.Count) < 5)
             {
                     lbListSachMuon.Items.Add(cbxMaTLPM.Text);
                     lbListSachMuonHide.Items.Add(cbxMaTLPM.SelectedValue);
@@ -257,6 +322,26 @@ namespace GUI
             dgvPhieuTra.Columns[2].HeaderText = "Mã Phiếu Mượn";
             dgvPhieuTra.Columns[3].HeaderText = "Mã Tài Liệu";
             btnHuy_PhieuTra.Text = "Hủy";
+        }
+
+        private void btnThemPhieuTra_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddSachTra_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXoaMTLTrongList_Click(object sender, EventArgs e)
+        {
+            int index = lbListSachMuon.SelectedIndex;
+            if (index >= 0)
+            {
+                lbListSachMuon.Items.RemoveAt(index);
+                lbListSachMuonHide.Items.RemoveAt(index);
+            }
         }
     }
 }

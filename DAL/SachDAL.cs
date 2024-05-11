@@ -10,7 +10,7 @@ namespace DAL
 {
     public class SachDAL
     {
-        private string connectionString = @"Data Source=LAPTOP-HN4DH2L8\SQLEXPRESS;Initial Catalog=QLTHUVIEN;Integrated Security=True"; // Thay thế bằng chuỗi kết nối của bạn
+        private string connectionString = @"Data Source=SONTUNG;Initial Catalog=QLTHUVIEN;Integrated Security=True"; // Thay thế bằng chuỗi kết nối của bạn
 
         public List<Sach> GetAllBooks()
         {
