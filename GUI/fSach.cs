@@ -1,10 +1,12 @@
 ﻿using BLL;
+using Demo3Layer.BUS.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +17,7 @@ namespace GUI
     public partial class fSach : Form
     {
         BindingSource sach = new BindingSource();
+        MailHelper mailHelper = new MailHelper();
         public fSach()
         {
             InitializeComponent();
@@ -311,6 +314,41 @@ namespace GUI
                 }
             }
             catch (Exception ex) { MessageBox.Show("Lỗi thêm dữ liệu: " + ex.Message); }
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress(txtFrom.Text);
+            message.Subject = txtSubject.Text;
+            var mails = txtTo.Text?.Split(';');
+            if (mails == null || mails.Count() <= 0)
+            {
+                return;
+            }
+            foreach (var item in mails)
+            {
+                message.To.Add(new MailAddress(item?.Trim()));
+            }
+
+            message.Body = htmlEditControl1.DocumentHTML;
+            message.IsBodyHtml = true;
+
+            
+            if (mailHelper.SendMail(message))
+            {
+                MessageBox.Show("Đã gửi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void panel4_Paint_2(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

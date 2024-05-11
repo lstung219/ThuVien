@@ -63,5 +63,11 @@ namespace GUI
             }
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormQMK f = new FormQMK();
+            f.Show();
+            this.Hide();
+        }
     }
 }

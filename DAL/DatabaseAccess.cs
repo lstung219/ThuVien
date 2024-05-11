@@ -48,5 +48,41 @@ namespace DAL
 
             return result;
         }
+        public static bool CheckEmailExists(User user)
+        {
+            if (string.IsNullOrEmpty(user.GMAIL))
+            {
+                return false;
+            }
+
+            bool exists = false;
+
+            using (SqlConnection conn = SqlConnectionData.Connect())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT TOP 1 1 FROM USERR WHERE GMAIL = @Email", conn);
+                cmd.Parameters.AddWithValue("@Email", user.GMAIL);
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+                exists = rdr.HasRows;
+            }
+
+            return exists;
+        }
+
+
+
+        public static void UpdatePassword(User user, string newPassword)
+        {
+            using (SqlConnection conn = SqlConnectionData.Connect())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE USERR SET PASSWORD = @Password WHERE GMAIL = @Email", conn);
+                cmd.Parameters.AddWithValue("@Password", newPassword);
+                cmd.Parameters.AddWithValue("@Email", user.GMAIL);
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
+

@@ -166,6 +166,8 @@
   <ItemGroup>
     <Compile Include="BLL_Phieu.cs" />
     <Compile Include="DocGiaBLL.cs" />
+    <Compile Include="MailHelper.cs" />
+    <Compile Include="PasswordResetLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sachBLL.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />

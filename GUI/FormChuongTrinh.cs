@@ -1,4 +1,5 @@
 ﻿using System;
+using DTO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace GUI
 {
     public partial class FormChuongTrinh : Form
     {
+        private Timer timer;
         public FormChuongTrinh()
         {
             InitializeComponent();
@@ -19,7 +21,14 @@ namespace GUI
 
         private void FormChuongTrinh_Load(object sender, EventArgs e)
         {
-
+            // Khởi tạo Timer
+            timer = new Timer();
+            // Thiết lập thời gian cho Tick, 1000ms = 1 giây
+            timer.Interval = 1000;
+            // Đăng ký phương thức xử lý sự kiện cho sự kiện Tick của Timer
+            timer.Tick += timer_Tick;
+            // Bắt đầu Timer
+            timer.Start();
         }
         private Form currentFormChild;
         private void OpenChildForm(Form ChildForm)
@@ -51,14 +60,24 @@ namespace GUI
         {
 
         }
-        bool menuExpand = false;
-        
+        //bool menuExpand = false;
 
+        // Đảm bảo dừng Timer khi form được đóng
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            // Dừng Timer
+            timer.Stop();
+            // Giải phóng tài nguyên của Timer
+            timer.Dispose();
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (currentFormChild != null)
             {
                 currentFormChild.Close();
+                label1.Text = "Home";
+                pictureBox2.Image = pictureBox1.Image;
             }
         }
 
@@ -74,6 +93,29 @@ namespace GUI
             OpenChildForm(new frmPhieu());
             label1.Text = btn_phieu.Text;
             pictureBox2.Image = btn_phieu.Image;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            label3.Text = DateTime.Now.ToString("dd/MM/yy hh:mm:ss tt");
+        }
+        User user = new User(); 
+        private void btn_quanly_Click(object sender, EventArgs e)
+        {
+            if(user.Type=="QUANTHU")
+            {
+                MessageBox.Show("Bạn không có quyền truy cập.","Thông báo");
+            }
+            else
+            {
+                FormThuThu f = new FormThuThu();
+                f.Show();
+                this.Hide();
+            }
         }
     }
 }

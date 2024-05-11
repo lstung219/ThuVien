@@ -40,15 +40,20 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_quanly = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(226)))), ((int)(((byte)(235)))));
+            this.panel1.Controls.Add(this.btn_quanly);
             this.panel1.Controls.Add(this.btn_thongke);
             this.panel1.Controls.Add(this.btn_phieu);
             this.panel1.Controls.Add(this.pannel_body);
@@ -67,7 +72,7 @@
             this.btn_thongke.FlatAppearance.BorderSize = 0;
             this.btn_thongke.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_thongke.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_thongke.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btn_thongke.ForeColor = System.Drawing.Color.White;
             this.btn_thongke.Image = ((System.Drawing.Image)(resources.GetObject("btn_thongke.Image")));
             this.btn_thongke.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_thongke.Location = new System.Drawing.Point(0, 525);
@@ -85,7 +90,7 @@
             this.btn_phieu.FlatAppearance.BorderSize = 0;
             this.btn_phieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_phieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_phieu.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btn_phieu.ForeColor = System.Drawing.Color.White;
             this.btn_phieu.Image = ((System.Drawing.Image)(resources.GetObject("btn_phieu.Image")));
             this.btn_phieu.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_phieu.Location = new System.Drawing.Point(0, 401);
@@ -110,7 +115,7 @@
             this.btn_docgia.FlatAppearance.BorderSize = 0;
             this.btn_docgia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_docgia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_docgia.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btn_docgia.ForeColor = System.Drawing.Color.White;
             this.btn_docgia.Image = ((System.Drawing.Image)(resources.GetObject("btn_docgia.Image")));
             this.btn_docgia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_docgia.Location = new System.Drawing.Point(0, 277);
@@ -127,7 +132,7 @@
             this.btn_sach.FlatAppearance.BorderSize = 0;
             this.btn_sach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_sach.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_sach.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btn_sach.ForeColor = System.Drawing.Color.White;
             this.btn_sach.Image = ((System.Drawing.Image)(resources.GetObject("btn_sach.Image")));
             this.btn_sach.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_sach.Location = new System.Drawing.Point(0, 153);
@@ -154,7 +159,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(226)))), ((int)(((byte)(235)))));
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -186,12 +191,56 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(200, 100);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1282, 853);
             this.panel3.TabIndex = 2;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.Location = new System.Drawing.Point(515, 242);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(127, 34);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Ngày giờ";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 25.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.Location = new System.Drawing.Point(382, 177);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(534, 49);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Chào mừng đến với thư viện";
+            // 
+            // btn_quanly
+            // 
+            this.btn_quanly.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_quanly.FlatAppearance.BorderSize = 0;
+            this.btn_quanly.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_quanly.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btn_quanly.ForeColor = System.Drawing.Color.White;
+            this.btn_quanly.Image = ((System.Drawing.Image)(resources.GetObject("btn_quanly.Image")));
+            this.btn_quanly.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_quanly.Location = new System.Drawing.Point(0, 649);
+            this.btn_quanly.Name = "btn_quanly";
+            this.btn_quanly.Size = new System.Drawing.Size(200, 124);
+            this.btn_quanly.TabIndex = 5;
+            this.btn_quanly.Text = "Quản lý thủ thư";
+            this.btn_quanly.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_quanly.UseVisualStyleBackColor = true;
+            this.btn_quanly.Click += new System.EventHandler(this.btn_quanly_Click);
             // 
             // FormChuongTrinh
             // 
@@ -211,6 +260,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -228,5 +279,8 @@
         private System.Windows.Forms.Button btn_thongke;
         private System.Windows.Forms.Panel pannel_body;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_quanly;
     }
 }
