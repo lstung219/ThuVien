@@ -556,6 +556,7 @@
             this.btnXoaSachTra.TabIndex = 39;
             this.btnXoaSachTra.Text = "Xóa";
             this.btnXoaSachTra.UseVisualStyleBackColor = false;
+            this.btnXoaSachTra.Click += new System.EventHandler(this.btnXoaSachTra_Click);
             // 
             // btnAddSachTra
             // 
@@ -630,6 +631,7 @@
             this.cbxMaPMCuaPT.Name = "cbxMaPMCuaPT";
             this.cbxMaPMCuaPT.Size = new System.Drawing.Size(250, 30);
             this.cbxMaPMCuaPT.TabIndex = 33;
+            this.cbxMaPMCuaPT.SelectedIndexChanged += new System.EventHandler(this.cbxMaPMCuaPT_SelectedIndexChanged);
             // 
             // btnThemPhieuTra
             // 

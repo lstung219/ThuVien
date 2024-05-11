@@ -23,6 +23,10 @@ namespace GUI
             cbxMaTLPM.DataSource = p.LayDanhSachSach();
             cbxMaTLPM.DisplayMember = "TenSach";
             cbxMaTLPM.ValueMember = "MaSach";
+
+            //cbxMaPMCuaPT.DataSource = p.LayDanhSachPhieuMuon();
+            //cbxMaPMCuaPT.DisplayMember = "MaPhieuMuon";
+            //cbxMaPMCuaPT.ValueMember = "MaPhieuMuon";
         }
         public string maDG;
         private void LoadDataFromFormDanhSachDocGia()
@@ -47,6 +51,7 @@ namespace GUI
                     txtSearchPT.Text = maDG;
                     tbcQuanLiPhieu.SelectedTab = tbcQuanLiPhieu.TabPages[1];
                     tbcPhieuTra.SelectedTab = tbcPhieuTra.TabPages[1];
+
                 }
 
             }
@@ -331,7 +336,19 @@ namespace GUI
 
         private void btnAddSachTra_Click(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < Int32.Parse(lbDanhSachSachTra.Items.Count.ToString()); i++)
+            {
+                string value = lbDanhSachSachTra.Items[i].ToString().Trim();
+                if (value == cbxSachPT.Text.ToString().Trim())
+                {
+                    MessageBox.Show("Tài Liệu Này Đã Có !!!");
+                    return;
+                }
+            }
+            lbDanhSachSachTra.Items.Add(cbxSachPT.Text);
+            //lbDanhSachSachTraHide.Items.Add(cbxSachPT.SelectedValue);
+            //lbDanhSachSachTra.Items.Add(string.Format("{0} | {1}", cbxMaPMCuaPT.Text, cbxSachPT.Text));
+            lbDanhSachSachTraHide.Items.Add(string.Format("{0} | {1}", cbxMaPMCuaPT.Text, cbxSachPT.SelectedValue));
         }
 
         private void btnXoaMTLTrongList_Click(object sender, EventArgs e)
@@ -342,6 +359,25 @@ namespace GUI
                 lbListSachMuon.Items.RemoveAt(index);
                 lbListSachMuonHide.Items.RemoveAt(index);
             }
+        }
+
+        private void btnXoaSachTra_Click(object sender, EventArgs e)
+        {
+            int index = lbDanhSachSachTra.SelectedIndex;
+            if (index >= 0)
+            {
+                lbDanhSachSachTra.Items.RemoveAt(index);
+                lbDanhSachSachTraHide.Items.RemoveAt(index);
+            }
+        }
+
+        private void cbxMaPMCuaPT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //BLL_Phieu phieu = new BLL_Phieu();
+            //string MPM = cbxMaPMCuaPT.Text;
+            //cbxSachPT.DataSource = phieu.LayDanhSachMaTaiLieuCuaPhieuMuon(MPM);
+            //cbxSachPT.DisplayMember = "TenTaiLieu";
+            //cbxSachPT.ValueMember = "MaTaiLieu";
         }
     }
 }
