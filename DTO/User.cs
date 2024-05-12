@@ -12,6 +12,6 @@ namespace DTO
         public string PASSWORD { get; set; }
         public string GMAIL { get; set; }
         public string Type { get; set; }
-
+        public bool IsAdmin { get; set; }
     }
 }

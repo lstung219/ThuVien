@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
 
 namespace GUI
 {
@@ -103,19 +104,17 @@ namespace GUI
         {
             label3.Text = DateTime.Now.ToString("dd/MM/yy hh:mm:ss tt");
         }
-        User user = new User(); 
+        
         private void btn_quanly_Click(object sender, EventArgs e)
         {
-            if(user.Type=="QUANTHU")
-            {
-                MessageBox.Show("Bạn không có quyền truy cập.","Thông báo");
-            }
-            else
-            {
-                FormThuThu f = new FormThuThu();
-                f.Show();
-                this.Hide();
-            }
+            OpenChildForm(new FormThuThu());
+            label1.Text = btn_quanly.Text;
+            pictureBox2.Image = btn_quanly.Image;
+        }
+
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

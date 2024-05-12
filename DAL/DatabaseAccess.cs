@@ -83,6 +83,31 @@ namespace DAL
                 cmd.ExecuteNonQuery();
             }
         }
+        public bool ChangePassword(User user, string newPassword)
+        {
+            bool success = false;
+            using (SqlConnection conn = SqlConnectionData.Connect())
+            {
+                string query = "UPDATE USERR SET PASSWORD = @NewPassword WHERE PASSWORD = @pass";
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@NewPassword", newPassword);
+                command.Parameters.AddWithValue("@pass", user.PASSWORD);
+                try
+                {
+                    conn.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                        success = true;
+                }
+                catch (SqlException ex)
+                {
+                    // Xử lý exception
+                }
+            }
+            return success;
+        }
+
+
     }
 }
 

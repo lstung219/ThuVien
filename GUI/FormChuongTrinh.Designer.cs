@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChuongTrinh));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_quanly = new System.Windows.Forms.Button();
             this.btn_thongke = new System.Windows.Forms.Button();
             this.btn_phieu = new System.Windows.Forms.Button();
             this.pannel_body = new System.Windows.Forms.Panel();
@@ -42,7 +43,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_quanly = new System.Windows.Forms.Button();
+            this.btn_exit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -53,6 +54,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(226)))), ((int)(((byte)(235)))));
+            this.panel1.Controls.Add(this.btn_exit);
             this.panel1.Controls.Add(this.btn_quanly);
             this.panel1.Controls.Add(this.btn_thongke);
             this.panel1.Controls.Add(this.btn_phieu);
@@ -63,8 +65,26 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 953);
+            this.panel1.Size = new System.Drawing.Size(200, 1055);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_quanly
+            // 
+            this.btn_quanly.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_quanly.FlatAppearance.BorderSize = 0;
+            this.btn_quanly.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_quanly.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btn_quanly.ForeColor = System.Drawing.Color.White;
+            this.btn_quanly.Image = ((System.Drawing.Image)(resources.GetObject("btn_quanly.Image")));
+            this.btn_quanly.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_quanly.Location = new System.Drawing.Point(0, 649);
+            this.btn_quanly.Name = "btn_quanly";
+            this.btn_quanly.Size = new System.Drawing.Size(200, 124);
+            this.btn_quanly.TabIndex = 5;
+            this.btn_quanly.Text = "Tùy chỉnh";
+            this.btn_quanly.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_quanly.UseVisualStyleBackColor = true;
+            this.btn_quanly.Click += new System.EventHandler(this.btn_quanly_Click);
             // 
             // btn_thongke
             // 
@@ -165,7 +185,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(200, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1282, 100);
+            this.panel2.Size = new System.Drawing.Size(1302, 100);
             this.panel2.TabIndex = 1;
             // 
             // pictureBox2
@@ -197,7 +217,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(200, 100);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1282, 853);
+            this.panel3.Size = new System.Drawing.Size(1302, 955);
             this.panel3.TabIndex = 2;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -206,7 +226,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.Location = new System.Drawing.Point(515, 242);
+            this.label3.Location = new System.Drawing.Point(525, 293);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(127, 34);
             this.label3.TabIndex = 1;
@@ -218,35 +238,35 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 25.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(382, 177);
+            this.label2.Location = new System.Drawing.Point(392, 228);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(534, 49);
             this.label2.TabIndex = 0;
             this.label2.Text = "Chào mừng đến với thư viện";
             // 
-            // btn_quanly
+            // btn_exit
             // 
-            this.btn_quanly.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_quanly.FlatAppearance.BorderSize = 0;
-            this.btn_quanly.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_quanly.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_quanly.ForeColor = System.Drawing.Color.White;
-            this.btn_quanly.Image = ((System.Drawing.Image)(resources.GetObject("btn_quanly.Image")));
-            this.btn_quanly.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_quanly.Location = new System.Drawing.Point(0, 649);
-            this.btn_quanly.Name = "btn_quanly";
-            this.btn_quanly.Size = new System.Drawing.Size(200, 124);
-            this.btn_quanly.TabIndex = 5;
-            this.btn_quanly.Text = "Quản lý thủ thư";
-            this.btn_quanly.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_quanly.UseVisualStyleBackColor = true;
-            this.btn_quanly.Click += new System.EventHandler(this.btn_quanly_Click);
+            this.btn_exit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_exit.FlatAppearance.BorderSize = 0;
+            this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btn_exit.ForeColor = System.Drawing.Color.White;
+            this.btn_exit.Image = ((System.Drawing.Image)(resources.GetObject("btn_exit.Image")));
+            this.btn_exit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_exit.Location = new System.Drawing.Point(0, 773);
+            this.btn_exit.Name = "btn_exit";
+            this.btn_exit.Size = new System.Drawing.Size(200, 124);
+            this.btn_exit.TabIndex = 6;
+            this.btn_exit.Text = "Thoát";
+            this.btn_exit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_exit.UseVisualStyleBackColor = true;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
             // FormChuongTrinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1482, 953);
+            this.ClientSize = new System.Drawing.Size(1502, 1055);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -282,5 +302,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_quanly;
+        private System.Windows.Forms.Button btn_exit;
     }
 }
