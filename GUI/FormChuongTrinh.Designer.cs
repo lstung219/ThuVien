@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChuongTrinh));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_quanly = new System.Windows.Forms.Button();
             this.btn_thongke = new System.Windows.Forms.Button();
             this.btn_phieu = new System.Windows.Forms.Button();
             this.pannel_body = new System.Windows.Forms.Panel();
@@ -42,7 +43,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_quanly = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -53,6 +54,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(226)))), ((int)(((byte)(235)))));
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btn_quanly);
             this.panel1.Controls.Add(this.btn_thongke);
             this.panel1.Controls.Add(this.btn_phieu);
@@ -66,6 +68,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(225, 1191);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_quanly
+            // 
+            this.btn_quanly.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_quanly.FlatAppearance.BorderSize = 0;
+            this.btn_quanly.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_quanly.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btn_quanly.ForeColor = System.Drawing.Color.White;
+            this.btn_quanly.Image = ((System.Drawing.Image)(resources.GetObject("btn_quanly.Image")));
+            this.btn_quanly.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_quanly.Location = new System.Drawing.Point(0, 811);
+            this.btn_quanly.Name = "btn_quanly";
+            this.btn_quanly.Size = new System.Drawing.Size(225, 124);
+            this.btn_quanly.TabIndex = 5;
+            this.btn_quanly.Text = "Quản lý thủ thư";
+            this.btn_quanly.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_quanly.UseVisualStyleBackColor = true;
+            this.btn_quanly.Click += new System.EventHandler(this.btn_quanly_Click);
             // 
             // btn_thongke
             // 
@@ -219,7 +239,7 @@
             this.label3.Font = new System.Drawing.Font("Times New Roman", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label3.Location = new System.Drawing.Point(515, 242);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 34);
+            this.label3.Size = new System.Drawing.Size(152, 41);
             this.label3.TabIndex = 1;
             this.label3.Text = "Ngày giờ";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -231,27 +251,26 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 25.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label2.Location = new System.Drawing.Point(382, 177);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(534, 49);
+            this.label2.Size = new System.Drawing.Size(640, 58);
             this.label2.TabIndex = 0;
             this.label2.Text = "Chào mừng đến với thư viện";
             // 
-            // btn_quanly
+            // button1
             // 
-            this.btn_quanly.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_quanly.FlatAppearance.BorderSize = 0;
-            this.btn_quanly.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_quanly.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_quanly.ForeColor = System.Drawing.Color.White;
-            this.btn_quanly.Image = ((System.Drawing.Image)(resources.GetObject("btn_quanly.Image")));
-            this.btn_quanly.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_quanly.Location = new System.Drawing.Point(0, 649);
-            this.btn_quanly.Name = "btn_quanly";
-            this.btn_quanly.Size = new System.Drawing.Size(200, 124);
-            this.btn_quanly.TabIndex = 5;
-            this.btn_quanly.Text = "Quản lý thủ thư";
-            this.btn_quanly.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_quanly.UseVisualStyleBackColor = true;
-            this.btn_quanly.Click += new System.EventHandler(this.btn_quanly_Click);
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.Location = new System.Drawing.Point(0, 935);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(225, 124);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Thoát";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FormChuongTrinh
             // 
@@ -294,5 +313,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_quanly;
+        private System.Windows.Forms.Button button1;
     }
 }

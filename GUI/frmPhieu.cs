@@ -180,8 +180,8 @@ namespace GUI
             dgvPhieuMuon.DataSource = busPhieu.XemChiTietPhieuMuon(maPhieuMuon);
             dgvPhieuMuon.ReadOnly = true;
             dgvPhieuMuon.Columns[0].HeaderText = "Chi Tiết Phiếu Mượn";
-            dgvPhieuMuon.Columns[1].HeaderText = "Mã Tài Liệu";
-            dgvPhieuMuon.Columns[2].HeaderText = "Mã Phiếu Mượn";
+            dgvPhieuMuon.Columns[1].HeaderText = "Mã Phiếu Mượn";
+            dgvPhieuMuon.Columns[2].HeaderText = "Mã Sách";
             btnHuy_PhieuMuon.Text = "Hủy";
         }
 
