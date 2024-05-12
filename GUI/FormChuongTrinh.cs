@@ -88,42 +88,12 @@ namespace GUI
             label1.Text = btn_sach.Text;
             pictureBox2.Image = btn_sach.Image;
         }
-            private void btn_docgia_Click(object sender, EventArgs e)
-            {
-                OpenChildForm(new FormDanhSachDocGia());
-                label1.Text = btn_docgia.Text;
-                pictureBox2.Image = btn_docgia.Image;
-            }
-
-            private void btn_phieu_Click(object sender, EventArgs e)
-            {
-                OpenChildForm(new frmPhieu());
-                label1.Text = btn_phieu.Text;
-                pictureBox2.Image = btn_phieu.Image;
-            }
-
-            private void label3_Click(object sender, EventArgs e)
-            {
-
-            }
-            private void timer_Tick(object sender, EventArgs e)
-            {
-                label3.Text = DateTime.Now.ToString("dd/MM/yy hh:mm:ss tt");
-            }
-            User user = new User();
-            private void btn_quanly_Click(object sender, EventArgs e)
-            {
-                if (user.Type == "QUANTHU")
-                {
-                    MessageBox.Show("Bạn không có quyền truy cập.", "Thông báo");
-                }
-                else
-                {
-                    FormThuThu f = new FormThuThu();
-                    f.Show();
-                    this.Hide();
-                }
-            }
+        private void btn_docgia_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormDanhSachDocGia());
+            label1.Text = btn_docgia.Text;
+            pictureBox2.Image = btn_docgia.Image;
+        }
 
         private void btn_phieu_Click(object sender, EventArgs e)
         {
@@ -134,13 +104,13 @@ namespace GUI
 
         private void label3_Click(object sender, EventArgs e)
         {
-            
+
         }
         private void timer_Tick(object sender, EventArgs e)
         {
             label3.Text = DateTime.Now.ToString("dd/MM/yy hh:mm:ss tt");
         }
-        
+        User user = new User();
         private void btn_quanly_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FormThuThu());
@@ -148,8 +118,16 @@ namespace GUI
             pictureBox2.Image = btn_quanly.Image;
         }
 
+        
+
+       
+        
+
+       
+
         private void btn_exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
- }
+    }
+}
