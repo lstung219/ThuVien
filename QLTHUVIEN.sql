@@ -128,21 +128,21 @@ VALUES
 ('QT003', N'Lê Thị C', '1973-11-01', N'Nam', '0923456789', N'56 Bà Triệu', 'lethic@gmail.com', 'userC', 'passC'),
 ('QT004', N'Hoàng Minh D', '1982-03-15', N'Nữ', '0934567890', N'78 Lý Tự Trọng', 'hoangminhd@gmail.com', 'userD', 'passD'),
 ('QT005', N'Trần Ngọc E', '1978-05-22', N'Nữ', '0945678901', N'60 Hai Bà Trưng', 'trannogce@gmail.com', 'userE', 'passE');
-
+go
 CREATE TABLE USERR(
 	USERNAME NVARCHAR(50) PRIMARY KEY,
 	PASSWORD NVARCHAR(50),
 	GMAIL NVARCHAR(100),
 	UserType VARCHAR(20)
 )
-drop table USERR
+go
 INSERT INTO USERR(USERNAME,PASSWORD,UserType)
 SELECT USERNAME,PASS,'ADMIN' AS UserType
 FROM ADMINN
 INSERT INTO USERR(USERNAME,PASSWORD,GMAIL,UserType)
 SELECT USERNAME,PASS,GMAIL,'QUANTHU' AS UserType
 FROM QUANTHU
-select * from userr
+
 
 
 -- Thêm dữ liệu vào bảng PHIEUMUON
@@ -161,7 +161,7 @@ VALUES
 ('CTPM002', 'PM002', 'S002'),
 ('CTPM003', 'PM003', 'S003'),
 ('CTPM004', 'PM004', 'S004'),
-('CTPM005', 'PM005', 'S005'),
+('CTPM005', 'PM005', 'S005')
 
 
 -- Thêm dữ liệu vào bảng PHIEUTRA
@@ -233,7 +233,7 @@ BEGIN
 
     DELETE FROM PHIEUMUON
     WHERE MAPHIEUMUON = @MaPhieuMuon;
-END
+END;
 go
 CREATE PROCEDURE [dbo].[usp_SoSachDangMuon] 
     @MaDocGia CHAR(10), 
@@ -257,6 +257,7 @@ BEGIN
 
     SET @SoSachDangMuon = @SoSachMuon - @SoSachTra;
 END
+go
 select * from PHIEUTRA
 SELECT TOP 10 S.MASACH, S.TENSACH, COUNT(*) AS SoLuotMuon
 FROM Sach S
@@ -276,7 +277,7 @@ FROM CHITIETPHIEUMUON c
 JOIN PHIEUMUON pm ON c.MAPHIEUMUON = pm.MAPHIEUMUON
 JOIN SACH S ON S.MASACH = c.MASACH
 JOIN DOCGIA d ON pm.MADG = d.MADG
-
+go
 CREATE PROCEDURE usp_TimMaDGTiepTheo
     @MaDocGia NVARCHAR(10) OUT
 AS
@@ -292,7 +293,7 @@ BEGIN
 
     SET @MaDocGia = @MaDG
 END
-
+go
 CREATE PROCEDURE usp_LayDanhSachTaiLieu
 AS
 BEGIN
