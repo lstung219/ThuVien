@@ -249,7 +249,7 @@
             this.label3.Font = new System.Drawing.Font("Times New Roman", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label3.Location = new System.Drawing.Point(541, 339);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 34);
+            this.label3.Size = new System.Drawing.Size(152, 41);
             this.label3.TabIndex = 1;
             this.label3.Text = "Ngày giờ";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -261,7 +261,7 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 25.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label2.Location = new System.Drawing.Point(422, 287);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(534, 49);
+            this.label2.Size = new System.Drawing.Size(640, 58);
             this.label2.TabIndex = 0;
             this.label2.Text = "Chào mừng đến với thư viện";
             // 
