@@ -23,7 +23,7 @@ namespace GUI
             cbxMaTLPM.DataSource = p.LayDanhSachSach();
             cbxMaTLPM.DisplayMember = "TenSach";
             cbxMaTLPM.ValueMember = "MaSach";
-
+            lbListSachMuonHide.Hide();
             //cbxMaPMCuaPT.DataSource = p.LayDanhSachPhieuMuon();
             //cbxMaPMCuaPT.DisplayMember = "MaPhieuMuon";
             //cbxMaPMCuaPT.ValueMember = "MaPhieuMuon";
@@ -378,6 +378,11 @@ namespace GUI
             //cbxSachPT.DataSource = phieu.LayDanhSachMaTaiLieuCuaPhieuMuon(MPM);
             //cbxSachPT.DisplayMember = "TenTaiLieu";
             //cbxSachPT.ValueMember = "MaTaiLieu";
+        }
+
+        private void lbListSachMuonHide_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
