@@ -14,5 +14,6 @@ namespace DTO
         public string GioiTinh {  get; set; }
         public string Sdt {  get; set; }
         public string Diachi {  get; set; }
+        public string GMAIL {  get; set; }
     }
 }

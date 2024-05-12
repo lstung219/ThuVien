@@ -39,8 +39,26 @@ namespace BLL
         {
             return dal_Phieu.SoSachDangMuon(maDocGia);
         }
-
-
+        public DataTable LayDanhSachSach()
+        {
+            return dal_Phieu.LayDanhSachSach();
+        }
+        public string LayMaPhieuMuonTiepTheo()
+        {
+            return dal_Phieu.LayMaPhieuMuonTiepTheo();
+        }
+        public string LayMaChiTietPhieuMuonTiepTheo()
+        {
+            return dal_Phieu.LayMaChiTietPhieuMuonTiepTheo();
+        }
+        public int ThemPhieuMuon(string maQTHienTai, string madocgia, string masach, string maphieumuon, string mactpm)
+        {
+            return dal_Phieu.ThemPhieuMuon(maQTHienTai, madocgia, masach, maphieumuon, mactpm);
+        }
+        public void ThemChiTietPhieuMuon(string maCTPM, string maSach, string maPhieuMuon)
+        {
+             dal_Phieu.ThemChiTietPhieuMuon(maCTPM, maSach, maPhieuMuon);
+        }
 
         //Phiếu trả
         DAL_PhieuTra dal_PhieuTra = new DAL_PhieuTra();

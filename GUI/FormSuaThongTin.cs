@@ -15,7 +15,7 @@ namespace GUI
 {
     public partial class FormSuaThongTin : Form
     {
-        private BusinessLogic businessLogic;
+        //private BusinessLogic businessLogic;
         private string maDG;
 
         public FormSuaThongTin(string maDG, string hoTen, string sdt, string diaChi)
@@ -25,8 +25,8 @@ namespace GUI
             textBox1.Text = maDG;
             textBox2.Text = hoTen;
             textBox3.Text = sdt;
-            textBox4.Text = diaChi;
-            businessLogic = new BusinessLogic();
+            //textBox4.Text = diaChi;
+            //businessLogic = new BusinessLogic();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace GUI
 
             try
             {
-                businessLogic.UpdateDGInfo(maDG, newHoTen, newSdt, newDiaChi);
+                //businessLogic.UpdateDGInfo(maDG, newHoTen, newSdt, newDiaChi);
                 MessageBox.Show("Sửa thông tin độc giả thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 this.Close();
