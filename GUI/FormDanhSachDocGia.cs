@@ -38,7 +38,6 @@ namespace GUI
 
             }
             textBox1.Enabled = false;
-            // Tìm mã Độc Giả Tiếp theo để Thêm Mới
             textBox1.Text = docgiaBLL.TimMaDocGiaTiepTheo();
             Hide_ChiTietDG();
             btnLuu.Hide();
@@ -59,12 +58,11 @@ namespace GUI
             btnLapPhieuTra.Show();
 
 
-
+            dgvDGSearch.DataSource = docgiaBLL.GetDSDG();
             dgvDGSearch.ReadOnly = true;
             dgvDGSearch.Columns[0].ReadOnly = true;
             dgvDGSearch.Columns[0].HeaderText = "Mã Độc Giả";
             dgvDGSearch.Columns[1].HeaderText = "Họ Tên";
-            dgvDGSearch.Columns[3].HeaderText = "Loại Độc Giả";
 
         }
         void ReadOnly_ChiTietDG()
@@ -189,10 +187,6 @@ namespace GUI
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            dgvDGSearch.DataSource = docgiaBLL.GetDSDG();
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -353,6 +347,19 @@ namespace GUI
 
         private void btnXoaDocGia_Click(object sender, EventArgs e)
         {
+            DocGiaBLL DocGiabll = new DocGiaBLL();
+            string madocgia = dgvDGSearch[0, dgvDGSearch.CurrentRow.Index].Value.ToString();
+            if (MessageBox.Show(string.Format("Xác nhận xóa độc giả {0}", madocgia), "Xác nhận xóa", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if (DocGiabll.DeleteDG(madocgia))
+                {
+                    MessageBox.Show("Xóa Độc Giả Thành Công!!!");
+                    btnXemAllDocGia_Click(sender, e);
+                }
+                    
+                else
+                    MessageBox.Show("Không thể Xóa Độc Giả Này!!!");
+            }
 
         }
         public event EventHandler<DocGiaEventArgs> DocGiaSelected;

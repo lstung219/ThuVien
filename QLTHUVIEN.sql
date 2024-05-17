@@ -66,9 +66,7 @@ CREATE TABLE CHITIETPHIEUMUON(
 CREATE TABLE PHIEUTRA(
     MAPHIEUTRA NVARCHAR(25) PRIMARY KEY,
     NGAYLAPPHIEUTRA DATE,
-    MADG NVARCHAR(25) not null,
     MAQT NVARCHAR(25) not null,
-    FOREIGN KEY (MADG) REFERENCES DOCGIA(MADG),
     FOREIGN KEY (MAQT) REFERENCES QUANTHU(MAQT)
 )
 
@@ -167,13 +165,13 @@ VALUES
 
 
 -- Thêm dữ liệu vào bảng PHIEUTRA
-INSERT INTO PHIEUTRA(MAPHIEUTRA, NGAYLAPPHIEUTRA, MADG, MAQT)
+INSERT INTO PHIEUTRA(MAPHIEUTRA, NGAYLAPPHIEUTRA, MAQT)
 VALUES
-('PT001', '2024-04-15', 'DG001', 'QT001'),
-('PT002', '2024-04-16', 'DG002', 'QT002'),
-('PT003', '2024-04-17', 'DG003', 'QT003'),
-('PT004', '2024-04-18', 'DG004', 'QT004'),
-('PT005', '2024-04-19', 'DG005', 'QT005');
+('PT001', '2024-04-15', 'QT001'),
+('PT002', '2024-04-16', 'QT002'),
+('PT003', '2024-04-17', 'QT003'),
+('PT004', '2024-04-18', 'QT004'),
+('PT005', '2024-04-19', 'QT005');
 
 -- Thêm dữ liệu vào bảng CHITIETPHIEUTRA
 -- Thêm dữ liệu vào bảng CHITIETPHIEUTRA
@@ -184,41 +182,6 @@ VALUES
 ('CTPT003', 'PT003', 'S003', 'PM003'),
 ('CTPT004', 'PT004', 'S004', 'PM004'),
 ('CTPT005', 'PT005', 'S005', 'PM005');
-go
-CREATE PROCEDURE UpdateViolationCount
-AS
-BEGIN
-    UPDATE PHIEUNHACNHO
-    SET SoLanViPham = SoLanViPham + 1
-    WHERE MADG IN (
-        SELECT PM.MADG
-        FROM PHIEUMUON PM
-        INNER JOIN CHITIETPHIEUMUON CTPM ON PM.MAPHIEUMUON = CTPM.MAPHIEUMUON
-        GROUP BY PM.MADG, PM.MAPHIEUMUON
-        HAVING COUNT(DISTINCT CTPM.MASACH) <> (
-            SELECT COUNT(*)
-            FROM CHITIETPHIEUTRA CTPT
-            WHERE CTPT.MAPHIEUTRA = PM.MAPHIEUMUON
-        )
-    );
-END
-go
-
-CREATE PROCEDURE CheckAndIncrementViolation
-AS
-BEGIN
-    UPDATE PHIEUNHACNHO
-    SET SoLanViPham = SoLanViPham + 1
-    WHERE MADG IN (
-        SELECT MADG
-        FROM (
-            SELECT PM.MADG
-            FROM PHIEUMUON PM
-            INNER JOIN PHIEUTRA PT ON PM.MADG = PT.MADG
-            WHERE DATEDIFF(day, PM.NGAYLAPPHIEU, PT.NGAYLAPPHIEUTRA) > 14
-        ) AS LateReturns
-    );
-END;
 go
 CREATE PROCEDURE [dbo].[usp_XoaPhieuMuon] 
     @MaPhieuMuon CHAR(10)
@@ -336,7 +299,6 @@ BEGIN
     SET @result = 0;
     DECLARE @SoLanViPham INT = 0;
 
-    -- Kiểm tra số lần vi phạm của độc giả
     IF EXISTS (SELECT * FROM PHIEUNHACNHO WHERE MADG = @MaDocGia)
     BEGIN
         SELECT @SoLanViPham = SoLanViPham FROM PHIEUNHACNHO WHERE MADG = @MaDocGia;
@@ -376,3 +338,149 @@ BEGIN
     FROM SACH
     WHERE SLTON > 0;
 END
+
+
+CREATE PROCEDURE [dbo].[usp_LayMaTLCuaPM] 
+    @MaPhieuMuon NVARCHAR(10)
+AS
+BEGIN
+    SELECT s.MASACH, s.TENSACH 
+    FROM PHIEUMUON pm
+    INNER JOIN CHITIETPHIEUMUON ctpm ON ctpm.MAPHIEUMUON = pm.MAPHIEUMUON
+    INNER JOIN SACH s ON s.MASACH = ctpm.MASACH
+    WHERE pm.MAPHIEUMUON = @MaPhieuMuon;
+END
+go
+CREATE PROCEDURE [dbo].[usp_LoadMaPhieuMuon]
+AS
+BEGIN
+    SELECT pm.MAPHIEUMUON
+    FROM PHIEUMUON pm
+    WHERE NOT EXISTS (
+        SELECT 1 
+        FROM CHITIETPHIEUTRA ctpt
+        WHERE ctpt.MAPHIEUMUON = pm.MAPHIEUMUON
+    )
+END
+GO
+CREATE PROCEDURE usp_LayMaPhieuMuonTheoMaDG
+    @MaDocGia CHAR(10)
+AS
+BEGIN
+    SELECT pm.MAPHIEUMUON
+    FROM PHIEUMUON pm
+    WHERE pm.MADG = @MaDocGia
+    AND NOT EXISTS (
+        SELECT 1
+        FROM CHITIETPHIEUTRA ctpt
+        WHERE ctpt.MAPHIEUMUON = pm.MAPHIEUMUON
+    )
+END
+go
+
+CREATE PROCEDURE usp_TimMaPhieuTraTiepTheo
+    @MaPhieuTra NVARCHAR(10) OUT
+AS
+BEGIN
+    DECLARE @MaPT NVARCHAR(10) = 'PT001'
+    DECLARE @idx INT = 1
+    WHILE EXISTS (SELECT MAPHIEUTRA FROM PHIEUTRA WHERE MAPHIEUTRA = @MaPT)
+    BEGIN
+        SET @idx = @idx + 1
+        SET @MaPT = 'PT' + REPLICATE('0', 3 - LEN(CAST(@idx AS VARCHAR))) + CAST(@idx AS VARCHAR)
+    END
+
+    SET @MaPhieuTra = @MaPT
+END
+go
+CREATE PROCEDURE usp_TimMaChiTietPhieuTraTiepTheo
+    @MaCTPT NVARCHAR(10) OUT
+AS
+BEGIN
+    DECLARE @MaPM NVARCHAR(10) = 'CTPT001'
+    DECLARE @idx INT = 1
+    WHILE EXISTS (SELECT MACTPT FROM CHITIETPHIEUTRA WHERE MACTPT = @MaPM)
+    BEGIN
+        SET @idx = @idx + 1
+        SET @MaPM = 'CTPT' + REPLICATE('0', 4 - LEN(CAST(@idx AS VARCHAR))) + CAST(@idx AS VARCHAR)
+    END
+
+    SET @MaCTPT = @MaPM
+END
+go
+CREATE PROCEDURE [dbo].[usp_LaySoSachCuaPM]
+    @MaPhieuMuon CHAR(10),
+    @SoSach INT OUT
+AS
+BEGIN
+    SELECT @SoSach = COUNT(ctpm.MaSach)
+    FROM PHIEUMUON pm
+    INNER JOIN CHITIETPHIEUMUON ctpm ON ctpm.MaPhieuMuon = pm.MaPhieuMuon
+    WHERE pm.MaPhieuMuon = @MaPhieuMuon;
+END
+go
+CREATE PROCEDURE [dbo].[usp_LaySoNgayQuaHan]
+    @MaPhieuMuon CHAR(10),
+    @NQH INT OUT
+AS
+BEGIN
+    SELECT @NQH = DATEDIFF(DAY, NGAYLAPPHIEU, GETDATE())
+    FROM PHIEUMUON
+    WHERE MaPhieuMuon = @MaPhieuMuon;
+END
+go
+CREATE PROCEDURE [dbo].[usp_TangSoLanViPham]
+    @MaDocGia NCHAR(10)
+AS
+BEGIN
+    IF EXISTS (SELECT 1 FROM PHIEUNHACNHO WHERE MADG = @MaDocGia)
+    BEGIN
+        UPDATE PHIEUNHACNHO
+        SET SoLanViPham = SoLanViPham + 1
+        WHERE MADG = @MaDocGia;
+    END
+    ELSE
+    BEGIN
+        INSERT INTO PHIEUNHACNHO (MADG, SoLanViPham)
+        VALUES (@MaDocGia, 1);
+    END
+END
+go
+CREATE PROCEDURE [dbo].[usp_LayMaDocGiaDePhat]
+    @MaPhieuMuon NCHAR(10),
+    @MaDocGia NCHAR(10) OUT
+AS
+BEGIN
+    SELECT @MaDocGia = MADG
+    FROM PHIEUMUON
+    WHERE MaPhieuMuon = @MaPhieuMuon;
+END
+go
+CREATE PROCEDURE [dbo].[usp_ThemPhieuTra]
+    @MaPhieuTra NCHAR(10),
+    @MaNVLapPhieuTra NCHAR(10)
+AS
+BEGIN
+    INSERT INTO PHIEUTRA (MaPhieuTra, MAQT, NGAYLAPPHIEUTRA)
+    VALUES (@MaPhieuTra, @MaNVLapPhieuTra, GETDATE());
+END
+go
+CREATE PROCEDURE [dbo].[usp_ThemChiTietPhieuTra]
+    @MaCTPT NCHAR(10),
+    @MaPhieuTra NCHAR(10),
+    @MaPhieuMuon NCHAR(10),
+    @MaSach NCHAR(10)
+AS
+BEGIN
+    IF EXISTS (SELECT * FROM PHIEUTRA pt, SACH s WHERE pt.MaPhieuTra = @MaPhieuTra AND s.MaSach = @MaSach)
+    BEGIN
+        INSERT INTO CHITIETPHIEUTRA (MaCTPT, MaPhieuTra, MaPhieuMuon, MaSach)
+        VALUES (@MaCTPT, @MaPhieuTra, @MaPhieuMuon, @MaSach);
+
+        UPDATE SACH
+        SET SLTON += 1
+        WHERE MaSach = @MaSach;
+    END
+END
+go
+

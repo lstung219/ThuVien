@@ -18,15 +18,16 @@ namespace GUI
         public frmPhieu()
         {
             InitializeComponent();
-            LoadDataFromFormDanhSachDocGia();
             BLL_Phieu p = new BLL_Phieu();
+
+            lbListSachMuonHide.Hide();
+            cbxMaPMCuaPT.DataSource = p.LoadMaPhieuMuon();
+            cbxMaPMCuaPT.DisplayMember = "MaPhieuMuon";
+            cbxMaPMCuaPT.ValueMember = "MaPhieuMuon";
+            LoadDataFromFormDanhSachDocGia();
             cbxMaTLPM.DataSource = p.LayDanhSachSach();
             cbxMaTLPM.DisplayMember = "TenSach";
             cbxMaTLPM.ValueMember = "MaSach";
-            lbListSachMuonHide.Hide();
-            //cbxMaPMCuaPT.DataSource = p.LayDanhSachPhieuMuon();
-            //cbxMaPMCuaPT.DisplayMember = "MaPhieuMuon";
-            //cbxMaPMCuaPT.ValueMember = "MaPhieuMuon";
         }
         public string maDG;
         private void LoadDataFromFormDanhSachDocGia()
@@ -47,10 +48,18 @@ namespace GUI
                 }
                 if (loaiPhieu == "PhieuTra")
                 {
+                    BLL_Phieu ph = new BLL_Phieu();
                     string maDG = formDanhSachDocGia.MaDG;
                     txtSearchPT.Text = maDG;
+                    cbxMaPMCuaPT.DataSource = ph.LayMaPhieuMuonTheoMaDG(maDG);
+                    BLL_Phieu phieu = new BLL_Phieu();
+                    string MPM = cbxMaPMCuaPT.Text;
+                    cbxSachPT.DataSource = phieu.LayDanhSachMaTaiLieuCuaPhieuMuon(MPM);
+                    cbxSachPT.DisplayMember = "TenSach";
+                    cbxSachPT.ValueMember = "MaSach";
                     tbcQuanLiPhieu.SelectedTab = tbcQuanLiPhieu.TabPages[1];
                     tbcPhieuTra.SelectedTab = tbcPhieuTra.TabPages[1];
+                    
 
                 }
 
@@ -88,6 +97,10 @@ namespace GUI
 
                     lbListSachMuon.Items.Clear();
                     lbListSachMuonHide.Items.Clear();
+                    BLL_Phieu p = new BLL_Phieu();
+                    cbxMaPMCuaPT.DataSource = p.LoadMaPhieuMuon();
+                    cbxMaPMCuaPT.DisplayMember = "MaPhieuMuon";
+                    cbxMaPMCuaPT.ValueMember = "MaPhieuMuon";
                 }
                 else
                 {
@@ -128,8 +141,6 @@ namespace GUI
 
                 if (dgvPhieuMuon.RowCount > 0)
                 {
-                    btnChinhSua_CTPM.Visible = false;
-                    btnLuuCTPM.Visible = false;
                     btnHuy_PhieuMuon.Visible = false;
 
                     btnXemChiTiet_PhieuMuon.Visible = true;
@@ -155,16 +166,11 @@ namespace GUI
 
             btnXemChiTiet_PhieuMuon.Visible = true;
             btnXoaPhieuMuon.Visible = true;
-
-            btnChinhSua_CTPM.Visible = false;
-            btnLuuCTPM.Visible = false;
             btnHuy_PhieuMuon.Visible = false;
         }
 
         private void btnXemChiTiet_PhieuMuon_Click(object sender, EventArgs e)
         {
-            btnChinhSua_CTPM.Visible = true;
-            btnLuuCTPM.Visible = true;
             btnHuy_PhieuMuon.Visible = true;
 
             btnXemChiTiet_PhieuMuon.Visible = false;
@@ -196,18 +202,6 @@ namespace GUI
             dgvPhieuMuon.Columns[0].ReadOnly = true;
         }
 
-        private void btnLuuCTPM_Click(object sender, EventArgs e)
-        {
-            //btnHuy_PhieuMuon.Text = "Thoát";
-            //string maCTPM = dgvPhieuMuon[0, dgvPhieuMuon.CurrentRow.Index].Value.ToString();
-            //string maTaiLieu = dgvPhieuMuon[1, dgvPhieuMuon.CurrentRow.Index].Value.ToString();
-            //string maTaiLieuCu = txtCapNhatCTPM.Text;
-            //string maPhieuMuon = dgvPhieuMuon[2, dgvPhieuMuon.CurrentRow.Index].Value.ToString();
-
-            //DTO_PhieuMuon x = new DTO_PhieuMuon(maCTPM, maTaiLieu, maTaiLieuCu, maPhieuMuon);
-            //BLL_Phieu p = new BLL_Phieu();
-            //p.UpdatePhieuMuon(x);
-        }
 
         private void btnXoaPhieuMuon_Click(object sender, EventArgs e)
         {
@@ -264,13 +258,10 @@ namespace GUI
 
                 dgvPhieuTra.Columns[0].HeaderText = "Mã Phiếu Trả";
                 dgvPhieuTra.Columns[1].HeaderText = "Ngày Lập Phiếu Trả";
-                dgvPhieuTra.Columns[2].HeaderText = "Mã Độc Giả";
-                dgvPhieuTra.Columns[3].HeaderText = "Mã Quản Thư";
-            btnXemChiTietPhieuTra.Visible = true;
+                dgvPhieuTra.Columns[2].HeaderText = "Mã Quản Thư";
+                btnXemChiTietPhieuTra.Visible = true;
                 btnXoaPhieuTra.Visible = true;
 
-                btnChinhSua_PhieuTra.Visible = false;
-                btnLuuPhieuTra.Visible = false;
                 btnHuy_PhieuTra.Visible = false;
         }
 
@@ -298,8 +289,7 @@ namespace GUI
                 btnXemChiTietPhieuTra.Visible = true;
                 btnXoaPhieuTra.Visible = true;
 
-                btnChinhSua_PhieuTra.Visible = false;
-                btnLuuPhieuTra.Visible = false;
+
                 btnHuy_PhieuTra.Visible = false;
             }
         }
@@ -309,8 +299,6 @@ namespace GUI
             btnXemChiTietPhieuTra.Visible = false;
             btnXoaPhieuTra.Visible = false;
 
-            btnChinhSua_PhieuTra.Visible = true;
-            btnLuuPhieuTra.Visible = true;
             btnHuy_PhieuTra.Visible = true;
             if (dgvPhieuTra.RowCount < 1)
             {
@@ -331,7 +319,48 @@ namespace GUI
 
         private void btnThemPhieuTra_Click(object sender, EventArgs e)
         {
+            if (lbDanhSachSachTra.Items.Count > 0)
+            {
+                BLL_Phieu mpt = new BLL_Phieu();
+                string maphieutra = mpt.LayMaPhieuTraTiepTheo();
+                string mactpt = mpt.LayMaChiTietPhieuTraTiepTheo();
+                string MaQT = "QT001";
 
+                for (int i = 0; i < lbDanhSachSachTraHide.Items.Count; i++)
+                {
+                    string[] listsachtra = lbDanhSachSachTraHide.Items[i].ToString().Split('|');
+                    string maphieumuon = listsachtra[0].Trim();
+                    string masach = listsachtra[1].Trim();
+
+                    if (i == 0)
+                    {
+                        BLL_Phieu busPhieu = new BLL_Phieu();
+                        mpt.ThemPhieuTra(MaQT, maphieumuon, maphieutra, mactpt, masach);
+                    }
+                    BLL_Phieu busPhieuCT = new BLL_Phieu();
+                    mpt.ThemChiTietPhieuTra(MaQT, maphieumuon, maphieutra, mactpt, masach);
+
+
+                    if (mpt.LaySoSachCuaPM(maphieumuon) > lbDanhSachSachTra.Items.Count)
+                    {
+                        string maDG = mpt.LayMaDocGiaDePhat(maphieumuon);
+                        mpt.TangSoLanViPham(maDG);
+                    }
+                    else if (mpt.LaySoNgayQuaHan(maphieumuon) > 0)
+                    {
+                        string maDG = mpt.LayMaDocGiaDePhat(maphieumuon);
+                        mpt.TangSoLanViPham(maDG);
+                    }
+                }
+
+                lbDanhSachSachTra.Items.Clear();
+                lbDanhSachSachTraHide.Items.Clear();
+                MessageBox.Show("Lập Phiếu Trả Thành Công !!!");
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn sách để trả");
+            }
         }
 
         private void btnAddSachTra_Click(object sender, EventArgs e)
@@ -373,14 +402,29 @@ namespace GUI
 
         private void cbxMaPMCuaPT_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //BLL_Phieu phieu = new BLL_Phieu();
-            //string MPM = cbxMaPMCuaPT.Text;
-            //cbxSachPT.DataSource = phieu.LayDanhSachMaTaiLieuCuaPhieuMuon(MPM);
-            //cbxSachPT.DisplayMember = "TenTaiLieu";
-            //cbxSachPT.ValueMember = "MaTaiLieu";
+            BLL_Phieu phieu = new BLL_Phieu();
+            string MPM = cbxMaPMCuaPT.Text;
+            cbxSachPT.DataSource = phieu.LayDanhSachMaTaiLieuCuaPhieuMuon(MPM);
+            cbxSachPT.DisplayMember = "TenSach";
+            cbxSachPT.ValueMember = "MaSach";
         }
 
         private void lbListSachMuonHide_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbDanhSachSachTraHide_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabpage_ThemPhieuTra_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxSachPT_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

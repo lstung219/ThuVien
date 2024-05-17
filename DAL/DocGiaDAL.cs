@@ -112,19 +112,23 @@ public class DataAccess
         }
     }
 
-    public void DeleteDG(string maDG)
+    public bool DeleteDG(string maDG)
     {
         string strSQL = "DELETE FROM DOCGIA WHERE MaDG = @MaDG";
-        SqlCommand cmd = new SqlCommand(strSQL, conn);
-        cmd.Parameters.AddWithValue("@MaDG", maDG);
-        try
+        using (SqlCommand cmd = new SqlCommand(strSQL, conn))
         {
-            conn.Open();
-            cmd.ExecuteNonQuery();
-        }
-        finally
-        {
-            conn.Close();
+            cmd.Parameters.AddWithValue("@MaDG", maDG);
+
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
     public string TimMaDocGiaTiepTheo()
@@ -170,4 +174,5 @@ public class DataAccess
         }
         return dt;
     }
+
 }

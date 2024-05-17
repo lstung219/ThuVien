@@ -10,7 +10,7 @@ namespace DAL
         // Create database connection
         public static SqlConnection Connect()
         {
-            string strcon = @"Data Source=LAPTOP-HN4DH2L8\SQLEXPRESS;Initial Catalog=QLTHUVIEN;Integrated Security=True";
+            string strcon = @"Data Source=SONTUNG;Initial Catalog=QLTHUVIEN;Integrated Security=True";
             SqlConnection conn = new SqlConnection(strcon);
             return conn;
         }

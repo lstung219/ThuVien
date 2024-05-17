@@ -1,4 +1,5 @@
 ﻿using DAL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -84,7 +85,50 @@ namespace BLL
         {
             return dal_PhieuTra.XemChiTietPhieuTra(maPhieuTra);
         }
-
+        public DataTable LayDanhSachMaTaiLieuCuaPhieuMuon(string maPhieuMuon)
+        {
+            return dal_PhieuTra.LayDanhSachMaTaiLieuCuaPhieuMuon(maPhieuMuon);
+        }
+        public DataTable LoadMaPhieuMuon()
+        {
+            return dal_PhieuTra.LoadMaPhieuMuon();
+        }
+        public DataTable LayMaPhieuMuonTheoMaDG(string maDocGia)
+        {
+            return dal_PhieuTra.LayMaPhieuMuonTheoMaDG(maDocGia);
+        }
+        public string LayMaPhieuTraTiepTheo()
+        {
+            return dal_PhieuTra.LayMaPhieuTraTiepTheo();
+        }
+        public string LayMaChiTietPhieuTraTiepTheo()
+        {
+            return dal_PhieuTra.LayMaChiTietPhieuTraTiepTheo();
+        }
+        public int LaySoSachCuaPM(string maPhieuMuon)
+        {
+            return dal_PhieuTra.LaySoSachCuaPM(maPhieuMuon);
+        }
+        public int LaySoNgayQuaHan(string maPhieuMuon)
+        {
+            return dal_PhieuTra.LaySoNgayQuaHan(maPhieuMuon);
+        }
+        public void TangSoLanViPham(string maDocGia)
+        {
+            dal_PhieuTra.TangSoLanViPham(maDocGia);
+        }
+        public string LayMaDocGiaDePhat(string maPhieuMuon)
+        {
+            return dal_PhieuTra.LayMaDocGiaDePhat(maPhieuMuon);
+        }
+        public void ThemPhieuTra(string MaQT, string maphieumuon, string maphieutra, string mactpt, string masach)
+        {
+            dal_PhieuTra.ThemPhieuTra(MaQT, maphieumuon, maphieutra, mactpt, masach);
+        }
+        public void ThemChiTietPhieuTra(string MaQT, string maphieumuon, string maphieutra, string mactpt, string masach)
+        {
+            dal_PhieuTra.ThemChiTietPhieuTra(MaQT, maphieumuon, maphieutra, mactpt, masach);
+        }
     }
 
 }

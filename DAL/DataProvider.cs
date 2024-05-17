@@ -6,7 +6,7 @@ namespace Demo3Layer.DAL
 {
     public class DataProvider
     {
-        private string connectionString = @"Data Source=LAPTOP-HN4DH2L8\SQLEXPRESS;Initial Catalog=QLTHUVIEN;Integrated Security=True";
+        private string connectionString = @"Data Source=SONTUNG;Initial Catalog=QLTHUVIEN;Integrated Security=True";
         private DataProvider()
         {
 

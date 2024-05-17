@@ -30,9 +30,9 @@ public class DocGiaBLL
         dataAccess.InsertDG(maDG, hoTen, sdt, diaChi, ngaySinh, gioiTinh, email);
     }
 
-    public void DeleteDG(string maDG)
+    public bool DeleteDG(string maDG)
     {
-        dataAccess.DeleteDG(maDG);
+        return dataAccess.DeleteDG(maDG);
     }
     public string TimMaDocGiaTiepTheo()
     {
