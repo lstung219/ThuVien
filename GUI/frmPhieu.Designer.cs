@@ -33,8 +33,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtMaPNN = new System.Windows.Forms.TextBox();
             this.btnSearchPNN = new System.Windows.Forms.Button();
-            this.btnChinhSuaPNN = new System.Windows.Forms.Button();
-            this.cbxmaDocGiaNN = new System.Windows.Forms.ComboBox();
             this.btnXemTatCaPhieuNhacNho = new System.Windows.Forms.Button();
             this.btnXoaPhieuNN = new System.Windows.Forms.Button();
             this.dgvPhieuNhacNho = new System.Windows.Forms.DataGridView();
@@ -111,6 +109,7 @@
             this.lbListSachMuon = new System.Windows.Forms.ListBox();
             this.btnThem_PhieuMuon = new System.Windows.Forms.Button();
             this.tbcQuanLiPhieu = new System.Windows.Forms.TabControl();
+            this.btnGiamPhieuNhacNho = new System.Windows.Forms.Button();
             this.tabPhieuNhacNho.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuNhacNho)).BeginInit();
             this.tabPhieuTra.SuspendLayout();
@@ -131,11 +130,10 @@
             // tabPhieuNhacNho
             // 
             this.tabPhieuNhacNho.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPhieuNhacNho.Controls.Add(this.btnGiamPhieuNhacNho);
             this.tabPhieuNhacNho.Controls.Add(this.label7);
             this.tabPhieuNhacNho.Controls.Add(this.txtMaPNN);
             this.tabPhieuNhacNho.Controls.Add(this.btnSearchPNN);
-            this.tabPhieuNhacNho.Controls.Add(this.btnChinhSuaPNN);
-            this.tabPhieuNhacNho.Controls.Add(this.cbxmaDocGiaNN);
             this.tabPhieuNhacNho.Controls.Add(this.btnXemTatCaPhieuNhacNho);
             this.tabPhieuNhacNho.Controls.Add(this.btnXoaPhieuNN);
             this.tabPhieuNhacNho.Controls.Add(this.dgvPhieuNhacNho);
@@ -185,30 +183,6 @@
             this.btnSearchPNN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSearchPNN.UseVisualStyleBackColor = false;
             // 
-            // btnChinhSuaPNN
-            // 
-            this.btnChinhSuaPNN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(72)))), ((int)(((byte)(129)))));
-            this.btnChinhSuaPNN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChinhSuaPNN.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChinhSuaPNN.ForeColor = System.Drawing.Color.White;
-            this.btnChinhSuaPNN.Location = new System.Drawing.Point(60, 466);
-            this.btnChinhSuaPNN.Margin = new System.Windows.Forms.Padding(4);
-            this.btnChinhSuaPNN.Name = "btnChinhSuaPNN";
-            this.btnChinhSuaPNN.Size = new System.Drawing.Size(156, 42);
-            this.btnChinhSuaPNN.TabIndex = 37;
-            this.btnChinhSuaPNN.Text = "Chỉnh Sửa";
-            this.btnChinhSuaPNN.UseVisualStyleBackColor = false;
-            // 
-            // cbxmaDocGiaNN
-            // 
-            this.cbxmaDocGiaNN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.cbxmaDocGiaNN.FormattingEnabled = true;
-            this.cbxmaDocGiaNN.Location = new System.Drawing.Point(759, 473);
-            this.cbxmaDocGiaNN.Margin = new System.Windows.Forms.Padding(4);
-            this.cbxmaDocGiaNN.Name = "cbxmaDocGiaNN";
-            this.cbxmaDocGiaNN.Size = new System.Drawing.Size(160, 26);
-            this.cbxmaDocGiaNN.TabIndex = 36;
-            // 
             // btnXemTatCaPhieuNhacNho
             // 
             this.btnXemTatCaPhieuNhacNho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
@@ -222,6 +196,7 @@
             this.btnXemTatCaPhieuNhacNho.TabIndex = 35;
             this.btnXemTatCaPhieuNhacNho.Text = "Xem Tất Cả";
             this.btnXemTatCaPhieuNhacNho.UseVisualStyleBackColor = false;
+            this.btnXemTatCaPhieuNhacNho.Click += new System.EventHandler(this.btnXemTatCaPhieuNhacNho_Click);
             // 
             // btnXoaPhieuNN
             // 
@@ -229,13 +204,14 @@
             this.btnXoaPhieuNN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXoaPhieuNN.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoaPhieuNN.ForeColor = System.Drawing.Color.White;
-            this.btnXoaPhieuNN.Location = new System.Drawing.Point(260, 465);
+            this.btnXoaPhieuNN.Location = new System.Drawing.Point(51, 465);
             this.btnXoaPhieuNN.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoaPhieuNN.Name = "btnXoaPhieuNN";
             this.btnXoaPhieuNN.Size = new System.Drawing.Size(156, 46);
             this.btnXoaPhieuNN.TabIndex = 32;
             this.btnXoaPhieuNN.Text = "Xóa";
             this.btnXoaPhieuNN.UseVisualStyleBackColor = false;
+            this.btnXoaPhieuNN.Click += new System.EventHandler(this.btnXoaPhieuNN_Click);
             // 
             // dgvPhieuNhacNho
             // 
@@ -257,13 +233,14 @@
             this.btnThemPhieuNhacNho.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThemPhieuNhacNho.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemPhieuNhacNho.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnThemPhieuNhacNho.Location = new System.Drawing.Point(468, 466);
+            this.btnThemPhieuNhacNho.Location = new System.Drawing.Point(264, 465);
             this.btnThemPhieuNhacNho.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemPhieuNhacNho.Name = "btnThemPhieuNhacNho";
             this.btnThemPhieuNhacNho.Size = new System.Drawing.Size(244, 41);
             this.btnThemPhieuNhacNho.TabIndex = 29;
             this.btnThemPhieuNhacNho.Text = "Thêm Phiếu Nhắc Nhở";
             this.btnThemPhieuNhacNho.UseVisualStyleBackColor = false;
+            this.btnThemPhieuNhacNho.Click += new System.EventHandler(this.btnThemPhieuNhacNho_Click);
             // 
             // tabPhieuTra
             // 
@@ -1233,6 +1210,21 @@
             this.tbcQuanLiPhieu.Size = new System.Drawing.Size(1002, 598);
             this.tbcQuanLiPhieu.TabIndex = 1;
             // 
+            // btnGiamPhieuNhacNho
+            // 
+            this.btnGiamPhieuNhacNho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(72)))), ((int)(((byte)(129)))));
+            this.btnGiamPhieuNhacNho.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGiamPhieuNhacNho.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGiamPhieuNhacNho.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnGiamPhieuNhacNho.Location = new System.Drawing.Point(578, 465);
+            this.btnGiamPhieuNhacNho.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGiamPhieuNhacNho.Name = "btnGiamPhieuNhacNho";
+            this.btnGiamPhieuNhacNho.Size = new System.Drawing.Size(244, 41);
+            this.btnGiamPhieuNhacNho.TabIndex = 41;
+            this.btnGiamPhieuNhacNho.Text = "Giảm Phiếu Nhắc Nhở";
+            this.btnGiamPhieuNhacNho.UseVisualStyleBackColor = false;
+            this.btnGiamPhieuNhacNho.Click += new System.EventHandler(this.btnGiamPhieuNhacNho_Click);
+            // 
             // frmPhieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1272,8 +1264,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtMaPNN;
         private System.Windows.Forms.Button btnSearchPNN;
-        private System.Windows.Forms.Button btnChinhSuaPNN;
-        private System.Windows.Forms.ComboBox cbxmaDocGiaNN;
         private System.Windows.Forms.Button btnXemTatCaPhieuNhacNho;
         private System.Windows.Forms.Button btnXoaPhieuNN;
         private System.Windows.Forms.DataGridView dgvPhieuNhacNho;
@@ -1350,5 +1340,6 @@
         private System.Windows.Forms.Button btnThem_PhieuMuon;
         private System.Windows.Forms.TabControl tbcQuanLiPhieu;
         private System.Windows.Forms.TextBox txtCapNhatCTPM;
+        private System.Windows.Forms.Button btnGiamPhieuNhacNho;
     }
 }

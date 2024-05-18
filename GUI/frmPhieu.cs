@@ -19,7 +19,7 @@ namespace GUI
         {
             InitializeComponent();
             BLL_Phieu p = new BLL_Phieu();
-
+            lbDanhSachSachTraHide.Hide();
             lbListSachMuonHide.Hide();
             cbxMaPMCuaPT.DataSource = p.LoadMaPhieuMuon();
             cbxMaPMCuaPT.DisplayMember = "MaPhieuMuon";
@@ -54,12 +54,11 @@ namespace GUI
                     cbxMaPMCuaPT.DataSource = ph.LayMaPhieuMuonTheoMaDG(maDG);
                     BLL_Phieu phieu = new BLL_Phieu();
                     string MPM = cbxMaPMCuaPT.Text;
+                    tbcQuanLiPhieu.SelectedTab = tbcQuanLiPhieu.TabPages[1];
+                    tbcPhieuTra.SelectedTab = tbcPhieuTra.TabPages[1];
                     cbxSachPT.DataSource = phieu.LayDanhSachMaTaiLieuCuaPhieuMuon(MPM);
                     cbxSachPT.DisplayMember = "TenSach";
                     cbxSachPT.ValueMember = "MaSach";
-                    tbcQuanLiPhieu.SelectedTab = tbcQuanLiPhieu.TabPages[1];
-                    tbcPhieuTra.SelectedTab = tbcPhieuTra.TabPages[1];
-                    
 
                 }
 
@@ -426,6 +425,92 @@ namespace GUI
 
         private void cbxSachPT_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnXemTatCaPhieuNhacNho_Click(object sender, EventArgs e)
+        {
+            BLL_Phieu busPhieu = new BLL_Phieu();
+            dgvPhieuNhacNho.DataSource = busPhieu.XemPhieuNhacNho();
+            dgvPhieuNhacNho.ReadOnly = false;
+            dgvPhieuNhacNho.Columns[0].HeaderText = "Mã Độc Giả ";
+            dgvPhieuNhacNho.Columns[1].HeaderText = "Số Lần Vi Phạm";
+
+        }
+
+        private void btnXoaPhieuNN_Click(object sender, EventArgs e)
+        {
+            if (dgvPhieuNhacNho.RowCount < 2)
+            {
+                return;
+            }
+
+            string mdg = dgvPhieuNhacNho[0, dgvPhieuNhacNho.CurrentRow.Index].Value.ToString();
+            BLL_Phieu p = new BLL_Phieu();
+
+            if (MessageBox.Show(string.Format("Xác nhận xóa Phiếu Nhắc Nhở Độc Giả {0}", mdg), "Xác nhận xóa", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                int result = p.XoaPhieuNhacNho(mdg);
+
+                if (result == 1)
+                {
+                    MessageBox.Show("Xóa thành công phiếu nhắc nhở của độc giả " + mdg);
+                    btnXemTatCaPhieuNhacNho_Click(sender, e); // Refresh the data grid view
+                }
+                else
+                {
+                    MessageBox.Show("Chưa Thể Xóa Phiếu Này !");
+                }
+            }
+        }
+
+        private void btnThemPhieuNhacNho_Click(object sender, EventArgs e)
+        {
+            if (dgvPhieuNhacNho.RowCount < 2)
+            {
+                return;
+            }
+
+            string mdg = dgvPhieuNhacNho[0, dgvPhieuNhacNho.CurrentRow.Index].Value.ToString();
+            BLL_Phieu p = new BLL_Phieu();
+
+            if (MessageBox.Show(string.Format("Xác nhận Thêm Phiếu Nhắc Nhở Độc Giả {0}", mdg), "Xác nhận Thêm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                    p.TangSoLanViPham(mdg);
+
+                    MessageBox.Show("Thêm thành công phiếu nhắc nhở của độc giả " + mdg);
+                    btnXemTatCaPhieuNhacNho_Click(sender, e); // Refresh the data grid view
+                
+            }
+            else
+            {
+                MessageBox.Show("Chưa Thể Thêm Phiếu Này !");
+            }
+        }
+
+        private void btnGiamPhieuNhacNho_Click(object sender, EventArgs e)
+        {
+
+                if (dgvPhieuNhacNho.RowCount < 2)
+                {
+                    return;
+                }
+
+                string mdg = dgvPhieuNhacNho[0, dgvPhieuNhacNho.CurrentRow.Index].Value.ToString();
+                BLL_Phieu p = new BLL_Phieu();
+
+                if (MessageBox.Show(string.Format("Xác nhận Giảm Phiếu Nhắc Nhở Độc Giả {0}", mdg), "Xác nhận Giảm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    p.GiamSoLanViPham(mdg);
+
+                    MessageBox.Show("Giảm thành công phiếu nhắc nhở của độc giả " + mdg);
+                    btnXemTatCaPhieuNhacNho_Click(sender, e); // Refresh the data grid view
+
+                }
+                else
+                {
+                    MessageBox.Show("Chưa Thể Giảm Phiếu Này !");
+                }
 
         }
     }

@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL_PhieuMuon.cs" />
+    <Compile Include="DAL_PhieuNN.cs" />
     <Compile Include="DAL_PhieuTra.cs" />
     <Compile Include="DatabaseAccess.cs" />
     <Compile Include="DataProvider.cs" />

@@ -58,7 +58,7 @@ namespace BLL
         }
         public void ThemChiTietPhieuMuon(string maCTPM, string maSach, string maPhieuMuon)
         {
-             dal_Phieu.ThemChiTietPhieuMuon(maCTPM, maSach, maPhieuMuon);
+            dal_Phieu.ThemChiTietPhieuMuon(maCTPM, maSach, maPhieuMuon);
         }
 
         //Phiếu trả
@@ -128,6 +128,21 @@ namespace BLL
         public void ThemChiTietPhieuTra(string MaQT, string maphieumuon, string maphieutra, string mactpt, string masach)
         {
             dal_PhieuTra.ThemChiTietPhieuTra(MaQT, maphieumuon, maphieutra, mactpt, masach);
+        }
+
+        //Phieu Nhac Nho
+        DAL_PhieuNN dal_PhieuNN = new DAL_PhieuNN();
+        public DataTable XemPhieuNhacNho()
+        {
+            return dal_PhieuNN.XemPhieuNhacNho();
+        }
+        public int XoaPhieuNhacNho(string maDocGia)
+        {
+            return dal_PhieuNN.XoaPhieuNhacNho(maDocGia);
+        }
+        public void GiamSoLanViPham(string maDocGia)
+        {
+             dal_PhieuNN.GiamSoLanViPham(maDocGia);
         }
     }
 
