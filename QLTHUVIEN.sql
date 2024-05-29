@@ -164,7 +164,6 @@ VALUES
 ('CTPM005', 'PM005', 'S005')
 
 
--- Thêm dữ liệu vào bảng PHIEUTRA
 INSERT INTO PHIEUTRA(MAPHIEUTRA, NGAYLAPPHIEUTRA, MAQT)
 VALUES
 ('PT001', '2024-04-15', 'QT001'),
@@ -173,8 +172,7 @@ VALUES
 ('PT004', '2024-04-18', 'QT004'),
 ('PT005', '2024-04-19', 'QT005');
 
--- Thêm dữ liệu vào bảng CHITIETPHIEUTRA
--- Thêm dữ liệu vào bảng CHITIETPHIEUTRA
+
 INSERT INTO CHITIETPHIEUTRA(MACTPT, MAPHIEUTRA, MASACH, MAPHIEUMUON)
 VALUES
 ('CTPT001', 'PT001', 'S001', 'PM001'),
@@ -182,6 +180,15 @@ VALUES
 ('CTPT003', 'PT003', 'S003', 'PM003'),
 ('CTPT004', 'PT004', 'S004', 'PM004'),
 ('CTPT005', 'PT005', 'S005', 'PM005');
+
+INSERT INTO PHIEUNHACNHO (MaDG, SoLanViPham)
+VALUES 
+('DG001', 1),
+('DG002', 2),
+('DG003', 3),
+('DG004', 0),
+('DG005', 4);
+
 go
 CREATE PROCEDURE [dbo].[usp_XoaPhieuMuon] 
     @MaPhieuMuon CHAR(10)
@@ -446,6 +453,16 @@ BEGIN
     END
 END
 go
+CREATE PROCEDURE [dbo].[usp_GiamSoLanViPham]
+    @MaDocGia NCHAR(10)
+AS
+BEGIN
+        UPDATE PHIEUNHACNHO
+        SET SoLanViPham = SoLanViPham - 1
+        WHERE MADG = @MaDocGia;
+END
+
+go
 CREATE PROCEDURE [dbo].[usp_LayMaDocGiaDePhat]
     @MaPhieuMuon NCHAR(10),
     @MaDocGia NCHAR(10) OUT
@@ -483,4 +500,21 @@ BEGIN
     END
 END
 go
+CREATE PROCEDURE usp_XoaPhieuNhacNho
+    @MaDocGia NCHAR(10)
+AS
+BEGIN
+    IF EXISTS (SELECT 1 FROM PHIEUNHACNHO WHERE MADG = @MaDocGia)
+    BEGIN
+
+        DELETE FROM PHIEUNHACNHO WHERE MADG = @MaDocGia;
+        RETURN 1; 
+    END
+    ELSE
+    BEGIN
+        RETURN 0; 
+    END
+END
+
+
 
